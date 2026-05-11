@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SwimQuest 🏊</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SwimQuest">
+<meta name="theme-color" content="#0a1628">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlN3aW1RdWVzdCBcdTIwMTQgR2FicmllbGUiLCAic2hvcnRfbmFtZSI6ICJTd2ltUXVlc3QiLCAiZGVzY3JpcHRpb24iOiAiSWwgdHVvIGFsbGVuYXRvcmUgZGkgbnVvdG8gcGVyc29uYWxlIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdC1wcmltYXJ5IiwgImJhY2tncm91bmRfY29sb3IiOiAiIzBhMTYyOCIsICJ0aGVtZV9jb2xvciI6ICIjMGExNjI4IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2NuZzlJakV3TUNJZ1ptbHNiRDBpSXpCaE1UWXlPQ0l2UGp4a1pXWnpQanhzYVc1bFlYSkhjbUZrYVdWdWRDQnBaRDBpWnlJZ2VERTlJakFpSUhreFBTSXdJaUI0TWowaU1TSWdlVEk5SWpFaVBqeHpkRzl3SUc5bVpuTmxkRDBpTUNVaUlITjBiM0F0WTI5c2IzSTlJaU13TUdRMFptWWlMejQ4YzNSdmNDQnZabVp6WlhROUlqRXdNQ1VpSUhOMGIzQXRZMjlzYjNJOUlpTmlNemc0Wm1ZaUx6NDhMMnhwYm1WaGNrZHlZV1JwWlc1MFBqd3ZaR1ZtY3o0OGNHRjBhQ0JrUFNKTk1DQXpOakFnUXpFeU9DQXpNakFnTWpVMklEUXdNQ0F6T0RRZ016WXdJRU0wTkRnZ016UXdJRFE0TUNBek5UQWdOVEV5SURNMk1DQk1OVEV5SURVeE1pQk1NQ0ExTVRKYUlpQm1hV3hzUFNJak1EQmtOR1ptSWlCdmNHRmphWFI1UFNJd0xqRXlJaTgrUEdOcGNtTnNaU0JqZUQwaU16SXdJaUJqZVQwaU1UY3dJaUJ5UFNJME1pSWdabWxzYkQwaWRYSnNLQ05uS1NJdlBqeHdZWFJvSUdROUlrMHhNakFnTWpNMUlFTXhPREFnTWpBMUlESTBNQ0F5TURBZ01qa3dJREl4T0NCRE16UXdJREl6TmlBek9UQWdNalE0SURRMU1DQXlNalVpSUhOMGNtOXJaVDBpZFhKc0tDTm5LU0lnYzNSeWIydGxMWGRwWkhSb1BTSXpNaUlnWm1sc2JEMGlibTl1WlNJZ2MzUnliMnRsTFd4cGJtVmpZWEE5SW5KdmRXNWtJaTgrUEhSbGVIUWdlRDBpTWpVMklpQjVQU0kwTkRBaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlJR1p2Ym5RdFptRnRhV3g1UFNKQmNtbGhiQ0JDYkdGamF5eHpZVzV6TFhObGNtbG1JaUJtYjI1MExYZGxhV2RvZEQwaU9UQXdJaUJtYjI1MExYTnBlbVU5SWpnNElpQm1hV3hzUFNJalptWmtOekF3SWo1VFVUd3ZkR1Y0ZEQ0OEwzTjJaejQ9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn0sIHsic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2NuZzlJakV3TUNJZ1ptbHNiRDBpSXpCaE1UWXlPQ0l2UGp4a1pXWnpQanhzYVc1bFlYSkhjbUZrYVdWdWRDQnBaRDBpWnlJZ2VERTlJakFpSUhreFBTSXdJaUI0TWowaU1TSWdlVEk5SWpFaVBqeHpkRzl3SUc5bVpuTmxkRDBpTUNVaUlITjBiM0F0WTI5c2IzSTlJaU13TUdRMFptWWlMejQ4YzNSdmNDQnZabVp6WlhROUlqRXdNQ1VpSUhOMGIzQXRZMjlzYjNJOUlpTmlNemc0Wm1ZaUx6NDhMMnhwYm1WaGNrZHlZV1JwWlc1MFBqd3ZaR1ZtY3o0OGNHRjBhQ0JrUFNKTk1DQXpOakFnUXpFeU9DQXpNakFnTWpVMklEUXdNQ0F6T0RRZ016WXdJRU0wTkRnZ016UXdJRFE0TUNBek5UQWdOVEV5SURNMk1DQk1OVEV5SURVeE1pQk1NQ0ExTVRKYUlpQm1hV3hzUFNJak1EQmtOR1ptSWlCdmNHRmphWFI1UFNJd0xqRXlJaTgrUEdOcGNtTnNaU0JqZUQwaU16SXdJaUJqZVQwaU1UY3dJaUJ5UFNJME1pSWdabWxzYkQwaWRYSnNLQ05uS1NJdlBqeHdZWFJvSUdROUlrMHhNakFnTWpNMUlFTXhPREFnTWpBMUlESTBNQ0F5TURBZ01qa3dJREl4T0NCRE16UXdJREl6TmlBek9UQWdNalE0SURRMU1DQXlNalVpSUhOMGNtOXJaVDBpZFhKc0tDTm5LU0lnYzNSeWIydGxMWGRwWkhSb1BTSXpNaUlnWm1sc2JEMGlibTl1WlNJZ2MzUnliMnRsTFd4cGJtVmpZWEE5SW5KdmRXNWtJaTgrUEhSbGVIUWdlRDBpTWpVMklpQjVQU0kwTkRBaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlJR1p2Ym5RdFptRnRhV3g1UFNKQmNtbGhiQ0JDYkdGamF5eHpZVzV6TFhObGNtbG1JaUJtYjI1MExYZGxhV2RvZEQwaU9UQXdJaUJtYjI1MExYTnBlbVU5SWpnNElpQm1hV3hzUFNJalptWmtOekF3SWo1VFVUd3ZkR1Y0ZEQ0OEwzTjJaejQ9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEwMCIgZmlsbD0iIzBhMTYyOCIvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMGQ0ZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiMzg4ZmYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMCAzNjAgQzEyOCAzMjAgMjU2IDQwMCAzODQgMzYwIEM0NDggMzQwIDQ4MCAzNTAgNTEyIDM2MCBMNTEyIDUxMiBMMCA1MTJaIiBmaWxsPSIjMDBkNGZmIiBvcGFjaXR5PSIwLjEyIi8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMTcwIiByPSI0MiIgZmlsbD0idXJsKCNnKSIvPjxwYXRoIGQ9Ik0xMjAgMjM1IEMxODAgMjA1IDI0MCAyMDAgMjkwIDIxOCBDMzQwIDIzNiAzOTAgMjQ4IDQ1MCAyMjUiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSIzMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHRleHQgeD0iMjU2IiB5PSI0NDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9Ijg4IiBmaWxsPSIjZmZkNzAwIj5TUTwvdGV4dD48L3N2Zz4=">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap');
+:root {
+  --bg:#0a1628;--bg2:#0f2040;--card:#112038;--card2:#162a4a;
+  --accent:#00d4ff;--gold:#ffd700;--green:#00e676;--orange:#ff9800;
+  --red:#ff5252;--purple:#b388ff;--text:#e8f4fd;--muted:#6b8cae;
+  --border:rgba(0,212,255,0.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;}
+.app{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:700px;width:100%;margin:0 auto;padding-bottom:80px;}
+.header{background:linear-gradient(135deg,#0a1628 0%,#0f2855 100%);border-bottom:1px solid var(--border);padding:14px 18px 10px;position:sticky;top:0;z-index:100;}
+.header-top{display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Orbitron',monospace;font-size:17px;font-weight:900;color:var(--accent);letter-spacing:2px;}
+.logo span{color:var(--gold);}
+.xp-bar-wrap{margin-top:8px;}
+.xp-label{font-size:11px;color:var(--muted);margin-bottom:4px;display:flex;justify-content:space-between;}
+.xp-bar{height:6px;background:var(--card2);border-radius:3px;overflow:hidden;}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));border-radius:3px;transition:width 0.5s ease;}
+.level-badge{background:var(--gold);color:#000;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;font-family:'Orbitron',monospace;}
+
+
+
+
+
+.nav-btn.active 
+.section{display:none;padding:14px 14px 100px;animation:fadeIn 0.25s ease;width:100%;}
+.section.active{display:block;width:100%;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:12px;}
+.card-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
+.hero-stat{background:var(--card2);border-radius:12px;padding:12px 6px;text-align:center;border:1px solid var(--border);}
+.hero-stat-num{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;color:var(--accent);}
+.hero-stat-lbl{font-size:10px;color:var(--muted);margin-top:2px;}
+.style-row{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);}
+.style-row:last-child{border-bottom:none;}
+.style-info{flex:1;}
+.style-name{font-size:13px;font-weight:700;}
+.style-times{font-size:11px;color:var(--muted);}
+.progress-bar2{height:5px;background:var(--card2);border-radius:3px;margin-top:4px;overflow:hidden;}
+.progress-fill2{height:100%;border-radius:3px;transition:width 0.6s ease;}
+input[type=number],input[type=text],select,textarea{background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:13px;padding:7px 10px;width:100%;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);}
+.btn{background:var(--accent);color:var(--bg);font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;transition:opacity 0.2s;}
+.btn:hover{opacity:0.85;}
+.btn.secondary{background:var(--card2);color:var(--text);border:1px solid var(--border);}
+.btn.green{background:var(--green);color:#000;}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.check-item:last-child{border-bottom:none;}
+.check-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin-top:1px;}
+.check-box.done{background:var(--green);border-color:var(--green);}
+.check-box.done::after{content:'✓';font-size:13px;color:#000;font-weight:900;}
+.check-label{font-size:13px;line-height:1.4;flex:1;}
+.check-label.done-txt{color:var(--muted);text-decoration:line-through;}
+.meal-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.meal-tab{padding:5px 10px;border-radius:20px;font-size:12px;font-weight:700;border:1px solid var(--border);cursor:pointer;background:var(--card2);color:var(--muted);transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.meal-tab.active{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+.mood-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px;}
+.mood-btn{background:var(--card2);border:2px solid transparent;border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:20px;display:flex;flex-direction:column;align-items:center;gap:3px;-webkit-tap-highlight-color:transparent;}
+.mood-btn span{font-size:9px;color:var(--muted);font-weight:700;}
+.mood-btn.selected{border-color:var(--accent);background:rgba(0,212,255,0.1);}
+.tip-card{background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.2);border-radius:12px;padding:14px;margin-top:8px;}
+.tip-title{font-size:12px;font-weight:800;color:var(--accent);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+.tip-text{font-size:13px;line-height:1.6;color:var(--text);}
+.goal-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.goal-item:last-child{border-bottom:none;}
+.tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800;}
+.tag-wip{background:rgba(255,152,0,0.15);color:var(--orange);}
+.tag-star{background:rgba(255,215,0,0.15);color:var(--gold);}
+.badges-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.badge-item{text-align:center;padding:10px 4px;}
+.badge-icon{font-size:26px;margin-bottom:4px;}
+.badge-name{font-size:10px;color:var(--muted);font-weight:700;}
+.badge-item.locked .badge-icon{filter:grayscale(1) opacity(0.3);}
+.badge-item.locked .badge-name{color:rgba(107,140,174,0.4);}
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:20px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;}
+.sec-head{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.sec-head h2{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:var(--accent);}
+.week-day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:10px;}
+.week-day{text-align:center;padding:7px 2px;border-radius:8px;font-size:10px;font-weight:700;color:var(--muted);border:1px solid transparent;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.week-day.today{border-color:var(--accent);color:var(--accent);}
+.week-day.done-day{background:rgba(0,230,118,0.15);color:var(--green);}
+.week-day.gara-day{background:rgba(255,215,0,0.15);color:var(--gold);}
+.week-day .day-letter{font-size:9px;display:block;}
+.results-list{max-height:200px;overflow-y:auto;}
+.result-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.result-row:last-child{border-bottom:none;}
+.result-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.offwater-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.ow-tab{padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;border:1px solid var(--border);cursor:pointer;background:var(--card2);color:var(--muted);transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.ow-tab.active{background:var(--purple);color:#fff;border-color:var(--purple);}
+.ex-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;}
+.ex-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.ex-icon{font-size:20px;width:28px;text-align:center;}
+.ex-name{font-size:13px;font-weight:800;color:var(--text);}
+.ex-detail{font-size:11px;color:var(--muted);margin-top:1px;}
+.ex-why{font-size:11px;color:var(--accent);margin-top:4px;line-height:1.4;}
+.ex-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;display:inline-block;margin-top:4px;}
+.ex-badge.potenziamento{background:rgba(179,136,255,0.2);color:var(--purple);}
+.ex-badge.elasticita{background:rgba(0,230,118,0.2);color:var(--green);}
+.ex-badge.core{background:rgba(0,212,255,0.2);color:var(--accent);}
+.ex-badge.mobilita{background:rgba(255,152,0,0.2);color:var(--orange);}
+.day-plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.day-plan-card{background:var(--card2);border-radius:12px;padding:10px;border:1px solid var(--border);}
+.day-plan-title{font-size:12px;font-weight:800;margin-bottom:5px;}
+.day-plan-item{font-size:11px;color:var(--muted);padding:1px 0;}
+.pr-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
+.pr-row:last-child{border-bottom:none;}
+
+#fab-save{position:fixed;bottom:80px;right:14px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#b388ff);color:#000;font-size:19px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,212,255,0.45);z-index:200;transition:transform 0.15s;}
+#fab-save:active{transform:scale(0.88);}
+#fab-label{position:fixed;bottom:142px;right:10px;background:var(--card);border:1px solid var(--border);color:var(--text);font-size:10px;font-weight:700;padding:4px 9px;border-radius:8px;z-index:200;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;}
+
+#fab-settings{position:fixed;bottom:80px;right:70px;width:48px;height:48px;border-radius:50%;background:var(--card2);color:var(--text);font-size:20px;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:200;transition:transform 0.15s;}
+#fab-settings:active{transform:scale(0.88);}
+#settings-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;display:none;align-items:flex-end;justify-content:center;}
+#settings-overlay.open{display:flex;}
+#settings-panel{background:var(--bg2);border-top:1px solid var(--border);border-radius:20px 20px 0 0;padding:22px 18px 44px;width:100%;max-width:500px;animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+.stitle{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:var(--accent);margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;}
+.sclose{background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;padding:0;line-height:1;}
+.slabel{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;}
+.srow{margin-bottom:16px;}
+.av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-bottom:4px;}
+.av-btn{font-size:22px;padding:7px 4px;background:var(--card);border:2px solid transparent;border-radius:10px;cursor:pointer;text-align:center;transition:all 0.15s;user-select:none;}
+.av-btn.sel{border-color:var(--accent);background:rgba(0,212,255,0.15);}
+.sinput{background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;padding:10px 14px;width:100%;-webkit-appearance:none;}
+.sinput:focus{outline:none;border-color:var(--accent);}
+.sbtn{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;padding:11px;border-radius:10px;border:none;cursor:pointer;width:100%;margin-bottom:10px;}
+.sbtn.ok{background:var(--accent);color:#000;}
+.sbtn.danger{background:rgba(255,82,82,0.12);color:#ff5252;border:1px solid rgba(255,82,82,0.3);}
+
+.bottom-bar{z-index:150;
+  display:flex;background:rgba(15,32,64,0.95);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--border);border-radius:50px;
+  padding:8px 10px;gap:4px;
+  position:fixed;bottom:12px;left:50%;transform:translateX(-50%);
+  z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.4);
+  max-width:360px;width:calc(100% - 40px);
+  justify-content:space-around;
+}
+.bb-btn{
+  flex:1;padding:9px 6px;background:none;border:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-family:'Nunito',sans-serif;font-size:9px;color:var(--muted);
+  border-radius:40px;transition:all 0.2s;
+}
+.bb-btn.active{background:rgba(0,212,255,0.15);color:var(--accent);}
+.bb-btn svg{width:18px;height:18px;}
+
+#install-banner{
+  display:none;
+  position:fixed;top:0;left:0;right:0;
+  background:linear-gradient(135deg,#0f2855,#1a1040);
+  border-bottom:2px solid var(--accent);
+  padding:12px 16px;
+  align-items:center;gap:12px;
+  z-index:1000;
+  box-shadow:0 4px 20px rgba(0,212,255,0.3);
+}
+.install-icon{font-size:28px;flex-shrink:0;}
+.install-text{flex:1;}
+.install-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px;}
+.install-sub{font-size:11px;color:var(--muted);}
+.install-btn{background:var(--accent);color:#000;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:8px 14px;border-radius:20px;border:none;cursor:pointer;white-space:nowrap;}
+.install-x{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:0;line-height:1;flex-shrink:0;}
+
+#install-banner{display:none;position:fixed;top:0;left:0;right:0;background:linear-gradient(135deg,#0f2855,#1a1040);border-bottom:2px solid var(--accent);padding:12px 14px;align-items:center;gap:10px;z-index:1000;box-shadow:0 4px 20px rgba(0,212,255,0.3);}
+#install-banner.show{display:flex;}
+.ib-icon{font-size:26px;flex-shrink:0;}
+.ib-text{flex:1;min-width:0;}
+.ib-title{font-size:13px;font-weight:800;color:var(--text);}
+.ib-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+.ib-btn{background:var(--accent);color:#000;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:7px 12px;border-radius:20px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.ib-x{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:0 0 0 4px;line-height:1;flex-shrink:0;}
+</style>
+</head>
+<body>
+<!-- INSTALL BANNER -->
+<div id="install-banner">
+  <div class="ib-icon">🏊</div>
+  <div class="ib-text">
+    <div class="ib-title">Installa SwimQuest</div>
+    <div class="ib-sub" id="ib-sub">Aggiungila alla schermata Home</div>
+  </div>
+  <button class="ib-btn" id="ib-btn" onclick="installApp()">Installa</button>
+  <button class="ib-x" onclick="dismissBanner()">×</button>
+</div>
+<div class="app">
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="logo">SWIM<span>QUEST</span> <span style="font-size:9px;color:var(--muted);font-family:'Nunito',sans-serif;font-weight:700;">v12</span></div>
+      <div id="header-name" style="font-size:13px;font-weight:900;color:var(--gold);margin-top:3px;">🏊 Gabriele</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span class="level-badge" id="level-badge">LV 1</span>
+      <div style="font-size:11px;color:var(--muted)">🏅 <span id="total-xp">0</span> XP</div>
+    </div>
+  </div>
+  <div class="xp-bar-wrap">
+    <div class="xp-label"><span id="level-name">Livello 1 — Delfino di Gabriele</span><span id="xp-next">0 / 10000 XP</span></div>
+    <div class="xp-bar"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div class="section active" id="sec-home">
+  <div class="sec-head" style="margin-top:12px"><h2>🏊 Dashboard</h2></div>
+
+  <!-- WELCOME CARD GABRIELE -->
+  <div id="welcome-card" style="background:linear-gradient(135deg,#0f2855 0%,#1a1040 100%);border:2px solid #00d4ff;border-radius:16px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:36px;opacity:0.07;pointer-events:none;">
+      <svg viewBox="0 0 300 36" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:100%"><path d="M0,18 C75,36 150,0 225,18 C262,27 281,22 300,18 L300,36 L0,36 Z" fill="#00d4ff"/></svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#00d4ff,#b388ff);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;border:2px solid rgba(255,255,255,0.15);">🏊</div>
+      <div>
+        <div style="font-family:'Orbitron',monospace;font-size:17px;font-weight:900;color:#fff;letter-spacing:1px;text-shadow:0 0 20px rgba(0,212,255,0.5);">Ciao, <span id="welcome-name" style="color:#ffd700">Gabriele</span>! 👋</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Atleta B2 · Nuoto agonistico · 11 anni</div>
+      </div>
+    </div>
+    <div style="background:rgba(0,0,0,0.2);border-radius:12px;padding:12px 14px;margin-bottom:10px;">
+      <div style="font-size:13px;line-height:1.75;color:#e8f4fd;">
+        Hai scelto uno sport <span style="color:#00e676;font-weight:800">fantastico</span> 🌊<br>
+        Ogni volta che entri in acqua diventi più forte, più veloce e più coraggioso.<br><br>
+        Il tuo obiettivo? <span style="color:#ffd700;font-weight:800">Togliere 2 secondi</span> su ogni stile — e ce la fai, davvero!<br>
+        Non serve essere perfetti ogni giorno. Basta <span style="color:#00d4ff;font-weight:800">dare il massimo oggi</span>.<br><br>
+        Usa questa app per tenere i tuoi tempi, mangiare nel modo giusto, fare i tuoi esercizi a secco e stare tranquillo prima delle gare 💪<br><br>
+        🏆 <strong style="color:#ffd700">Il campione non è chi vince sempre — è chi non smette mai di provarci.</strong>
+      </div>
+    </div>
+    <div id="qod" style="font-size:12px;font-style:italic;color:#6b8cae;text-align:center;padding:2px 0 2px;"></div>
+    <button onclick="closeWelcome()" style="position:absolute;top:10px;right:12px;background:none;border:none;color:#6b8cae;font-size:20px;cursor:pointer;line-height:1;padding:0;">×</button>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-stat"><div class="hero-stat-num" id="stat-al">0</div><div class="hero-stat-lbl">Sessioni</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="stat-ga">0</div><div class="hero-stat-lbl">Gare</div></div>
+    <div class="hero-stat"><div class="hero-stat-num" id="stat-st">0🔥</div><div class="hero-stat-lbl">Streak</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Settimana corrente</div>
+    <div class="week-day-grid" id="week-grid"></div>
+    <div style="display:flex;gap:12px;font-size:11px;color:var(--muted)">
+      <span><span style="color:var(--green)">■</span> Fatto</span>
+      <span><span style="color:var(--accent)">■</span> Oggi</span>
+      <span><span style="color:var(--gold)">■</span> Gara</span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Progressi per stile — vasche 25m</div>
+    <div id="stili-home"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🏆 Trofei</div>
+    <div class="badges-grid" id="badges-grid"></div>
+  </div>
+</div>
+
+<!-- TEMPI -->
+<div class="section" id="sec-train">
+  <div class="sec-head" style="margin-top:12px"><h2>⏱️ Tempi</h2></div>
+  <div class="card">
+    <div class="card-title">📝 Registra tempo</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+      <div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Gara</div>
+        <select id="reg-style">
+          <option value="stile_50">🟢 Stile 50m</option>
+          <option value="stile_100">🟢 Stile 100m</option>
+          <option value="dorso_50">🔵 Dorso 50m</option>
+          <option value="dorso_100">🔵 Dorso 100m</option>
+          <option value="rana_50">🟠 Rana 50m</option>
+          <option value="farfalla_50">🟣 Farfalla 50m</option>
+          <option value="misti_100">⭐ Misti 100m</option>
+        </select>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Tipo</div>
+        <select id="reg-type">
+          <option value="allenamento">🏊 Allenamento</option>
+          <option value="gara">🏆 Gara ufficiale</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Minuti</div>
+        <input type="number" id="reg-min" min="0" max="9" value="0">
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Secondi (es: 37.28)</div>
+        <input type="number" id="reg-sec" min="0" max="59" step="0.01" value="37.28">
+      </div>
+    </div>
+    <button class="btn" onclick="saveTime()" style="width:100%">💾 Salva tempo +150 XP</button>
+    <div id="save-feedback" style="font-size:12px;margin-top:6px;min-height:18px;text-align:center;"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📊 Storico tempi</div>
+    <div class="results-list" id="results-list">
+      <div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">Nessun tempo ancora — registra il primo!</div>
+    </div>
+  </div>
+</div>
+
+<!-- OFF-WATER -->
+<div class="section" id="sec-offwater">
+  <div class="sec-head" style="margin-top:12px"><h2>💪 Off-Water</h2></div>
+  <div class="card">
+    <div class="card-title">Piano settimanale off-water</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">La piscina la gestisce l'allenatore. <b style="color:var(--green)">Martedì e Giovedì</b>: potenziamento <b>30 min max</b>. <b style="color:var(--purple)">Sabato</b>: elasticità <b>15 min</b> — leggero prima della gara.</div>
+    <div class="day-plan-grid">
+      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Lunedì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
+      <div class="day-plan-card" style="border-color:rgba(0,230,118,0.3)"><div class="day-plan-title" style="color:var(--green)">💪 Martedì</div><div class="day-plan-item" style="font-weight:700">Potenziamento A</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">30 min — max</div></div>
+      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Mercoledì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
+      <div class="day-plan-card" style="border-color:rgba(0,212,255,0.3)"><div class="day-plan-title" style="color:var(--accent)">💪 Giovedì</div><div class="day-plan-item" style="font-weight:700">Potenziamento B</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">20 min — max</div></div>
+      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Venerdì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
+      <div class="day-plan-card" style="border-color:rgba(179,136,255,0.3)"><div class="day-plan-title" style="color:var(--purple)">🧘 Sabato</div><div class="day-plan-item" style="font-weight:700">Elasticità</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">15 min — pre-gara</div></div>
+      <div class="day-plan-card" style="border-color:rgba(255,215,0,0.3)"><div class="day-plan-title" style="color:var(--gold)">🏆 Domenica</div><div class="day-plan-item" style="color:var(--gold)">GARA!</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Seleziona sessione</div>
+    <div class="offwater-tabs">
+      <div class="ow-tab active" onclick="showOW('A',this)">💪 Martedì — Pot. A</div>
+      <div class="ow-tab" onclick="showOW('B',this)">💪 Giovedì</div>
+      <div class="ow-tab" onclick="showOW('C',this)">🧘 Sabato</div>
+    </div>
+    <div id="ow-content"></div>
+    <div style="margin-top:12px"><button class="btn green" onclick="completeOW()" style="width:100%">✓ Sessione completata! +300 XP</button></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📋 Checklist sessione</div>
+    <div id="ow-checklist"></div>
+  </div>
+</div>
+
+<!-- CIBO -->
+<div class="section" id="sec-food">
+  <div class="sec-head" style="margin-top:12px"><h2>🍽️ Alimentazione</h2></div>
+  <div class="card">
+    <div class="card-title">Piano del giorno</div>
+    <div class="meal-tabs" id="meal-tabs"></div>
+    <div id="meal-content"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">✅ Checklist giornaliera</div>
+    <div id="checklist-food"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">💡 Consiglio del giorno</div>
+    <div id="food-tip" style="font-size:13px;line-height:1.6;color:var(--text)"></div>
+  </div>
+</div>
+
+<!-- MENTE -->
+<div class="section" id="sec-mind">
+  <div class="sec-head" style="margin-top:12px"><h2>🧠 Mente & Gara</h2></div>
+  <div class="card">
+    <div class="card-title">Come ti senti oggi?</div>
+    <div class="mood-grid" id="mood-grid"></div>
+    <div class="tip-card" id="mood-tip" style="display:none"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🫁 Respirazione 4-7-8 (anti-ansia)</div>
+    <div style="text-align:center;padding:10px 0">
+      <div id="breath-circle" style="width:90px;height:90px;border-radius:50%;background:rgba(0,212,255,0.1);border:3px solid var(--accent);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--accent);cursor:pointer;transition:transform 0.3s ease;" onclick="startBreath()">START</div>
+      <div id="breath-label" style="font-size:13px;color:var(--muted)">Tocca per iniziare — calmati prima della gara</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px">Inspira 4s → Trattieni 7s → Espira 8s — ripeti 3 volte</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🎯 Visualizzazione — Dorso</div>
+    <div style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px">
+      Chiudi gli occhi, Gabriele, e immagina:<br>
+      <span style="color:var(--accent)">① Blocco</span> — sei sopra, mani sulle maniglie, corpo basso e teso.<br>
+      <span style="color:var(--accent)">② Partenza</span> — esplosione, arco perfetto, entri con le mani a spada.<br>
+      <span style="color:var(--accent)">③ Bracciata</span> — rotazione 35°, mano all'altezza della spalla.<br>
+      <span style="color:var(--accent)">④ Virata</span> — conti le bracciate dalla bandierina, spinta esplosiva.<br>
+      <span style="color:var(--accent)">⑤ Arrivo</span> — tocco preciso, guardi il tabellone: nuovo record! 🎉
+    </div>
+    <div id="checklist-vis"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">📖 Diario pre-gara</div>
+    <textarea id="diary-text" style="min-height:80px;resize:vertical" placeholder="Come ti senti? Hai paura? Sei carico? Scrivi tutto qui..."></textarea>
+    <button class="btn secondary" style="margin-top:8px;width:100%" onclick="saveDiary()">Salva pensiero +80 XP</button>
+    <div id="diary-saved" style="font-size:11px;color:var(--green);margin-top:6px;min-height:14px;"></div>
+  </div>
+</div>
+
+<!-- OBIETTIVI -->
+<div class="section" id="sec-goals">
+  <div class="sec-head" style="margin-top:12px"><h2>🎯 Obiettivi</h2></div>
+  <div class="card">
+    <div class="card-title">Obiettivi tempi — −2 sec per stile (vasche 25m)</div>
+    <div id="goals-list"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🏅 Record personali</div>
+    <div id="personal-records"></div>
+  </div>
+  <div class="card">
+    <div class="card-title">➕ Obiettivo personale</div>
+    <div style="margin-bottom:8px"><input type="text" id="goal-text" placeholder="es. arrivare in finale, vincere la gara di dorso..."></div>
+    <button class="btn" onclick="addGoal()" style="width:100%">Aggiungi +100 XP</button>
+    <div id="custom-goals" style="margin-top:12px"></div>
+  </div>
+</div>
+
+</div>
+
+<!-- NAV -->
+
+
+
+<!-- BOTTOM NAV BAR -->
+<div class="bottom-bar" id="bottom-bar">
+  <button class="bb-btn active" id="bb-home" onclick="showSec('home',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    Home
+  </button>
+  <button class="bb-btn" id="bb-train" onclick="showSec('train',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Tempi
+  </button>
+  <button class="bb-btn" id="bb-offwater" onclick="showSec('offwater',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    Off-Water
+  </button>
+  <button class="bb-btn" id="bb-food" onclick="showSec('food',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+    Cibo
+  </button>
+  <button class="bb-btn" id="bb-mind" onclick="showSec('mind',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    Mente
+  </button>
+  <button class="bb-btn" id="bb-goals" onclick="showSec('goals',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    Obiettivi
+  </button>
+</div>
+
+<button id="fab-settings" onclick="openSettings()" title="Impostazioni">⚙️</button>
+<button id="fab-save" onclick="fabSave()" title="Salva dati">💾</button>
+
+<div id="settings-overlay" onclick="closeSettingsOut(event)">
+  <div id="settings-panel">
+    <div class="stitle">⚙️ Impostazioni<button class="sclose" onclick="closeSettings()">×</button></div>
+    <div class="srow">
+      <div class="slabel">Scegli il tuo avatar</div>
+      <div class="av-grid" id="av-grid"></div>
+    </div>
+    <div class="srow">
+      <div class="slabel">Il tuo nome</div>
+      <input class="sinput" id="s-name" type="text" placeholder="Il tuo nome" maxlength="20">
+    </div>
+    <button class="sbtn ok" onclick="saveSettings()">✓ Salva nome e avatar</button>
+    <div style="height:1px;background:var(--border);margin:8px 0 14px"></div>
+    <div class="slabel" style="color:#ff5252">Zona pericolo</div>
+    <button class="sbtn danger" onclick="resetApp()">🔄 Reset completo — ricomincia da zero</button>
+  </div>
+</div>
+<div id="fab-label">Dati salvati!</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const PB = {
+  stile_50:    {time:32.20, label:'50m Stile libero',  color:'#00e676', emoji:'🟢'},
+  stile_100:   {time:75.00, label:'100m Stile libero', color:'#00e676', emoji:'🟢'},
+  dorso_50:    {time:37.28, label:'50m Dorso',         color:'#00d4ff', emoji:'🔵'},
+  dorso_100:   {time:82.00, label:'100m Dorso',        color:'#00d4ff', emoji:'🔵'},
+  rana_50:     {time:44.41, label:'50m Rana',          color:'#ff9800', emoji:'🟠'},
+  farfalla_50: {time:39.10, label:'50m Farfalla',      color:'#b388ff', emoji:'🟣'},
+  misti_100:   {time:85.10, label:'100m Misti',        color:'#ffd700', emoji:'⭐'},
+};
+const TGT = {};
+Object.keys(PB).forEach(k => { TGT[k] = +(PB[k].time - 2).toFixed(2); });
+
+const LEVELS = [
+  {min:0,    max:2000, name:'Livello 1 — Delfino',         badge:'LV 1'},
+  {min:2000, max:4000, name:'Livello 2 — Squalo Argento',  badge:'LV 2'},
+  {min:4000, max:6000, name:'Livello 3 — Manta Dorata',    badge:'LV 3'},
+  {min:6000, max:8000, name:'Livello 4 — Orca Leggenda',   badge:'LV 4'},
+  {min:8000, max:10000,name:'Livello 5 — Campione',        badge:'LV 5'},
+];
+
+function loadState() {
+  try { const s = localStorage.getItem('swimquest_v5'); if(s) return JSON.parse(s); } catch(e){}
+  return {xp:0,streak:0,allenamenti:0,gare:0,mood:null,activeMeal:'colazione',
+          times:[],foodChecks:{},visChecks:{},customGoals:[],
+          weekDays:{0:false,1:false,2:false,3:false,4:false,5:false,6:false},diaries:[],
+          nome:'Gabriele',avatar:'🏊'};
+}
+function saveState(){ try{localStorage.setItem('swimquest_v5',JSON.stringify(S));}catch(e){} }
+const S = loadState();
+
+function fmtTime(s){ if(s<60) return s.toFixed(2)+'s'; return Math.floor(s/60)+':'+(s%60).toFixed(2).padStart(5,'0'); }
+function getBest(k){ const f=S.times.filter(t=>t.key===k); return f.length?Math.min(...f.map(t=>t.secs)):null; }
+
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active'); btn.classList.add('active');
+  if(id==='offwater') buildOW(owActive);
+}
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2300); }
+
+function addXP(n){ S.xp+=n; refreshXP(); saveState(); }
+function refreshXP(){
+  const lv=LEVELS.find(l=>S.xp>=l.min&&S.xp<l.max)||LEVELS[LEVELS.length-1];
+  const pct=Math.min((S.xp/10000)*100,100);
+  document.getElementById('total-xp').textContent=S.xp;
+  document.getElementById('level-badge').textContent=lv.badge;
+  document.getElementById('xp-next').textContent=S.xp+' / 10000 XP';
+  document.getElementById('xp-fill').style.width=pct.toFixed(1)+'%';
+  const nome=S.nome||'Gabriele';
+  const avatar=S.avatar||'🏊';
+  document.getElementById('level-name').textContent=lv.name;
+  const hn=document.getElementById('header-name');
+  if(hn) hn.textContent=avatar+' '+nome;
+  const wn=document.getElementById('welcome-name');
+  if(wn) wn.textContent=nome;
+}
+
+// Week: L=0 M=1 M=2 G=3 V=4 S=5 D=6
+// Lunedì=piscina, Martedì=PotA, Mercoledì=piscina, Giovedì=PotB, Venerdì=piscina, Sabato=Elasticità, Domenica=Gara
+const DAY_CFG=[
+  {label:'L', emoji:'🌊', type:'acqua'},
+  {label:'M', emoji:'💪', type:'offwater'},
+  {label:'M', emoji:'🌊', type:'acqua'},
+  {label:'G', emoji:'💪', type:'offwater'},
+  {label:'V', emoji:'🌊', type:'acqua'},
+  {label:'S', emoji:'🧘', type:'offwater'},
+  {label:'D', emoji:'🏆', type:'gara'},
+];
+function buildWeekGrid(){
+  const today=new Date().getDay(); const ti=today===0?6:today-1;
+  const g=document.getElementById('week-grid'); g.innerHTML='';
+  DAY_CFG.forEach((d,i)=>{
+    const el=document.createElement('div'); el.className='week-day';
+    el.innerHTML='<span class="day-letter">'+d.label+'</span>'+d.emoji;
+    if(i===ti) el.classList.add('today');
+    if(d.type==='gara') el.classList.add('gara-day');
+    if(S.weekDays[i]) el.classList.add('done-day');
+    el.onclick=()=>{S.weekDays[i]=!S.weekDays[i];saveState();buildWeekGrid();};
+    g.appendChild(el);
+  });
+}
+
+const STILI_ORDER=['dorso_50','dorso_100','stile_50','stile_100','farfalla_50','rana_50','misti_100'];
+function buildStiliHome(){
+  document.getElementById('stili-home').innerHTML=STILI_ORDER.map(k=>{
+    const pb=PB[k],tgt=TGT[k],best=getBest(k),cur=best||pb.time;
+    const gained=parseFloat((pb.time-cur).toFixed(2));
+    const pct=Math.min(Math.max((gained/2)*100,0),100);
+    return `<div class="style-row">
+      <span style="font-size:18px;width:24px;text-align:center">${pb.emoji}</span>
+      <div class="style-info">
+        <div class="style-name">${pb.label}</div>
+        <div class="style-times">Attuale: ${fmtTime(cur)} → Obiettivo: ${fmtTime(tgt)}</div>
+        <div class="progress-bar2"><div class="progress-fill2" style="width:${pct.toFixed(0)}%;background:${pb.color}"></div></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:${gained>0?'var(--green)':'var(--muted)'};min-width:36px;text-align:right">${gained>0?'−'+gained+'s':'0s'}</div>
+    </div>`;
+  }).join('');
+}
+
+const BADGES=[
+  {icon:'🌊',name:'Primo tempo',     check:()=>S.times.length>0},
+  {icon:'⚡',name:'−1s dorso',       check:()=>{const b=getBest('dorso_50');return b&&b<PB.dorso_50.time-1;}},
+  {icon:'🔥',name:'3 streak',        check:()=>S.streak>=3},
+  {icon:'🦈',name:'Sub 35s dorso',   check:()=>{const b=getBest('dorso_50');return b&&b<35;}},
+  {icon:'🏆',name:'Obiettivo stile', check:()=>{const b=getBest('stile_50');return b&&b<=TGT.stile_50;}},
+  {icon:'💪',name:'5 sessioni',      check:()=>S.allenamenti>=5},
+  {icon:'🧘',name:'Zen pre-gara',    check:()=>S.mood!==null},
+  {icon:'🦋',name:'Sub 37s farfalla',check:()=>{const b=getBest('farfalla_50');return b&&b<37;}},
+];
+function buildBadges(){
+  const u=BADGES.map(b=>{try{return b.check();}catch(e){return false;}});
+  document.getElementById('badges-grid').innerHTML=BADGES.map((b,i)=>
+    `<div class="badge-item ${u[i]?'':'locked'}"><div class="badge-icon">${b.icon}</div><div class="badge-name">${b.name}</div></div>`
+  ).join('');
+}
+
+function saveTime(){
+  const key=document.getElementById('reg-style').value;
+  const type=document.getElementById('reg-type').value;
+  const min=parseInt(document.getElementById('reg-min').value)||0;
+  const sec=parseFloat(document.getElementById('reg-sec').value)||0;
+  const secs=+(min*60+sec).toFixed(2);
+  if(secs<=0){showToast('Inserisci un tempo valido!');return;}
+  const prev=getBest(key)||PB[key].time;
+  const now=new Date();
+  const date=now.getDate()+' '+['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][now.getMonth()];
+  S.times.unshift({key,secs,type,date});
+  if(type==='gara'){S.gare++;document.getElementById('stat-ga').textContent=S.gare;}
+  addXP(15);
+  const fb=document.getElementById('save-feedback');
+  if(secs<prev){fb.textContent='🎉 NUOVO RECORD! −'+(prev-secs).toFixed(2)+'s!';fb.style.color='var(--gold)';showToast('🏆 Nuovo record! +15 XP');}
+  else{fb.textContent='✓ Tempo salvato! Continua così!';fb.style.color='var(--green)';showToast('Salvato! +15 XP');}
+  buildResultsList();buildStiliHome();buildGoalsList();buildPersonalRecords();buildBadges();
+  setTimeout(()=>{fb.textContent='';},3000);
+}
+function buildResultsList(){
+  const el=document.getElementById('results-list');
+  if(!S.times.length){el.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">Nessun tempo ancora</div>';return;}
+  el.innerHTML=S.times.slice(0,15).map(t=>{
+    const pb=PB[t.key]; const isRec=t.secs<=pb.time;
+    return `<div class="result-row">
+      <div class="result-dot" style="background:${pb.color}"></div>
+      <span style="color:${pb.color};font-weight:700;flex:1;font-size:11px">${pb.emoji} ${pb.label}</span>
+      <span style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:${isRec?'var(--gold)':'var(--accent)'}">${fmtTime(t.secs)}</span>
+      <span style="font-size:10px;color:var(--muted);min-width:44px;text-align:right">${t.type==='gara'?'🏆 ':''} ${t.date}</span>
+    </div>`;
+  }).join('');
+}
+
+// SESSIONI OFF-WATER
+// A = Martedì: Potenziamento A (core + forza specifica dorso/farfalla)
+// B = Giovedì: Potenziamento B (forza funzionale generale — inizio tardi)
+// C = Sabato:  Elasticità full-body (pre-gara, leggero)
+const OW={
+  A:{title:'💪 Martedì — Potenziamento (30 min)',exercises:[
+    {icon:'🦸',name:'Superman a terra',      detail:'2×10 rip — pausa 20s',      why:'Rinforza la schiena: corpo piatto nel dorso e farfalla.',      badge:'potenziamento'},
+    {icon:'🧱',name:'Plank frontale',        detail:'2×25s — pausa 20s',          why:'Core stabile = niente energia sprecata in acqua.',             badge:'core'},
+    {icon:'↔️',name:'Plank laterale',        detail:'2×20s per lato',             why:'Stabilità fianchi: migliora la rotazione nel dorso.',          badge:'core'},
+    {icon:'🦵',name:'Ponte glutei',          detail:'2×12 rip — pausa 20s',      why:'Gambe forti per le virate e la spinta dalla parete.',          badge:'potenziamento'},
+    {icon:'🔗',name:'Remata con elastico',   detail:'2×12 rip per lato',          why:'Simula la bracciata del dorso, rinforza la schiena.',          badge:'potenziamento'},
+  ]},
+  B:{title:'💪 Giovedì — Potenziamento (20 min)',exercises:[
+    {icon:'🦒',name:'Squat a corpo libero',  detail:'2×10 rip — pausa 20s',       why:'Forza gambe per partenze, virate e propulsione.',        badge:'potenziamento'},
+    {icon:'🌀',name:'Crunch obliqui',        detail:'2×10 rip per lato',           why:'Rotazione del tronco: chiave nel dorso e stile libero.', badge:'core'},
+    {icon:'🦅',name:'Apertura con elastico', detail:'2×10 rip — elastico davanti', why:'Rinforza le spalle per la bracciata a farfalla.',        badge:'potenziamento'},
+    {icon:'🧱',name:'Plank frontale',        detail:'2×20s — pausa 15s',           why:'Core stabile: meno energia sprecata in acqua.',          badge:'core'},
+  ]},
+  C:{title:'🧘 Sabato — Elasticità (15 min)',exercises:[
+    {icon:'🐍',name:'Cobra a terra',                    detail:'2×20s',              why:'Apre il petto e migliora la postura per il dorso.',             badge:'elasticita'},
+    {icon:'👶',name:'Posizione del bambino',            detail:'2×25s',              why:'Allungamento colonna e spalle — recupero perfetto.',            badge:'elasticita'},
+    {icon:'🧲',name:'Stretch spalla (braccio sul petto)',detail:'2×20s per lato',   why:'Scioglie il trapezio — tensione tipica dei nuotatori.',         badge:'elasticita'},
+    {icon:'🧘',name:'Stretching inguinale',             detail:'2×25s',              why:'Apertura anca per il calcio della rana e il delfino.',          badge:'elasticita'},
+    {icon:'🦢',name:'Hip flexor (affondo basso)',       detail:'2×25s per lato',     why:'Flessori anca: fondamentali per delfino, virata e partenza.',  badge:'elasticita'},
+  ]},
+};
+
+let owActive='A', owChecks={};
+function showOW(key,btn){
+  owActive=key; owChecks={};
+  document.querySelectorAll('.ow-tab').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  buildOW(key);
+}
+function buildOW(key){
+  const sess=OW[key];
+  document.getElementById('ow-content').innerHTML=`
+    <div style="font-size:12px;font-weight:800;color:var(--text);margin-bottom:10px">${sess.title}</div>
+    ${sess.exercises.map(e=>`
+      <div class="ex-card">
+        <div class="ex-header"><div class="ex-icon">${e.icon}</div><div><div class="ex-name">${e.name}</div><div class="ex-detail">${e.detail}</div></div></div>
+        <div class="ex-why">${e.why}</div>
+        <span class="ex-badge ${e.badge}">${e.badge.charAt(0).toUpperCase()+e.badge.slice(1)}</span>
+      </div>`).join('')}`;
+  buildOWChecklist(key);
+}
+function buildOWChecklist(key){
+  document.getElementById('ow-checklist').innerHTML=OW[key].exercises.map((e,i)=>{
+    const done=owChecks[i]||false;
+    return `<div class="check-item" onclick="toggleOWCheck(${i},'${key}')">
+      <div class="check-box ${done?'done':''}"></div>
+      <div class="check-label ${done?'done-txt':''}">${e.name}</div>
+    </div>`;
+  }).join('');
+}
+function toggleOWCheck(i,key){ owChecks[i]=!owChecks[i]; if(owChecks[i]){addXP(50);showToast('+50 XP!');} buildOWChecklist(key); }
+function completeOW(){
+  S.allenamenti++; S.streak++;
+  document.getElementById('stat-al').textContent=S.allenamenti;
+  document.getElementById('stat-st').textContent=S.streak+'🔥';
+  addXP(30); showToast('💪 Completato! +35 XP — streak '+S.streak+'🔥');
+  buildBadges(); buildWeekGrid();
+}
+
+const MEALS={
+  colazione:{label:'☀️ Colazione',   time:'7:00–7:30',      items:['Latte o yogurt greco 125g','Fiocchi d\'avena 30g + frutta fresca','1 fetta pane integrale + marmellata','Succo d\'arancia fresco']},
+  spuntino: {label:'🍌 Spuntino',    time:'10:00',           items:['Banana o mela','6-8 mandorle o noci','Acqua 200ml']},
+  pranzo:   {label:'🍝 Pranzo',       time:'12:30',           items:['Pasta o riso 60g','Pollo / tacchino / tonno 90g','Verdure cotte o crude','Frutta fresca']},
+  preall:   {label:'⚡ Pre-all.',     time:'60-90 min prima', items:['Banana o 2 crackers integrali','Acqua 250-300ml','Niente fritti o pesanti!']},
+  postall:  {label:'🔋 Post-all.',   time:'Entro 30-45 min', items:['Latte o smoothie banana+latte','1-2 biscotti secchi o pane+miele','Carbo + proteine subito']},
+  cena:     {label:'🌙 Cena',         time:'19:30',           items:['Riso, farro o pane 45g','Pesce, uova o legumi 80g','Verdure abbondanti','Olio EVO 1 cucchiaio']},
+};
+const FOOD_CHECKS=['Colazione fatta ✓','500ml acqua mattina','Spuntino sano ✓','Pranzo equilibrato ✓','Pre-allenamento ok ✓','Post-allenamento ok ✓','Cena leggera ✓','2L acqua totali ✓'];
+const FOOD_TIPS=[
+  'Per un atleta di 11 anni: circa 1600-1800 kcal nei giorni di allenamento sono la giusta energia!',
+  'Bevi 1.5-2L di acqua al giorno — il corpo di un nuotatore ne ha molto bisogno.',
+  'La banana prima dell\'allenamento: energia rapida, potassio per i muscoli.',
+  'Dopo l\'allenamento mangia entro 30 min — il corpo recupera al massimo!',
+  'La cena del sabato è fondamentale: pasta leggera e riposo prima della gara.',
+  'Pesce, noci e olio EVO aiutano i muscoli a crescere e recuperare.',
+  'Più colori nel piatto = più nutrienti diversi. Mangia l\'arcobaleno!',
+];
+function buildFoodSection(){
+  document.getElementById('meal-tabs').innerHTML=Object.entries(MEALS).map(([k,m])=>
+    `<div class="meal-tab ${S.activeMeal===k?'active':''}" onclick="setMeal('${k}')">${m.label.split(' ')[0]}</div>`
+  ).join('');
+  setMeal(S.activeMeal);
+  document.getElementById('checklist-food').innerHTML=FOOD_CHECKS.map((item,i)=>{
+    const done=S.foodChecks[i]||false;
+    return `<div class="check-item" onclick="toggleFoodCheck(${i})">
+      <div class="check-box ${done?'done':''}"></div>
+      <div class="check-label ${done?'done-txt':''}">${item}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('food-tip').textContent=FOOD_TIPS[new Date().getDay()%FOOD_TIPS.length];
+}
+function setMeal(k){
+  S.activeMeal=k;
+  document.querySelectorAll('.meal-tab').forEach((t,i)=>{t.classList.toggle('active',Object.keys(MEALS)[i]===k);});
+  const m=MEALS[k];
+  document.getElementById('meal-content').innerHTML=`
+    <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+      <span style="font-weight:800;font-size:14px">${m.label}</span>
+      <span style="font-size:11px;color:var(--muted)">${m.time}</span>
+    </div>
+    ${m.items.map(item=>`<div class="check-item" style="cursor:default">
+      <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0"></div>
+      <div class="check-label">${item}</div>
+    </div>`).join('')}`;
+}
+function toggleFoodCheck(i){ S.foodChecks[i]=!S.foodChecks[i]; if(S.foodChecks[i]){addXP(30);showToast('+30 XP!');}else saveState(); buildFoodSection(); }
+
+const MOODS=[
+  {emoji:'😰',label:'Molto teso', tips:['Gabriele, respira piano: 4s inspira, 7s trattieni, 8s espira — 3 volte!','Scrivi 3 cose che ami del nuoto.','Anche i campioni hanno i nervi — è energia!']},
+  {emoji:'😟',label:'Ansioso',    tips:['Fai 5 respiri lenti, Gabriele — piano piano.','Allunga le spalle per 2 minuti.','Ricorda una gara in cui hai nuotato benissimo!']},
+  {emoji:'😐',label:'Normale',    tips:['Stai bene — concentrazione alta!','Ascolta la tua musica preferita.','Visualizza la partenza perfetta.']},
+  {emoji:'😊',label:'Bene',       tips:['Ottimo! Canalizza questa energia positiva.','Condividi la carica con i compagni.','Sei pronto a dare il massimo!']},
+  {emoji:'🔥',label:'Carico!',   tips:['ANDIAMO GABRIELE! Porta questa energia in vasca!','Ricorda la tecnica anche quando spingi al massimo.','Divertiti — il nuoto è la cosa più bella!']},
+];
+function buildMoodGrid(){
+  document.getElementById('mood-grid').innerHTML=MOODS.map((m,i)=>
+    `<div class="mood-btn ${S.mood===i?'selected':''}" onclick="setMood(${i})">${m.emoji}<span>${m.label}</span></div>`
+  ).join('');
+}
+function setMood(i){
+  S.mood=i; saveState(); buildMoodGrid();
+  const m=MOODS[i]; const tip=m.tips[Math.floor(Math.random()*m.tips.length)];
+  const el=document.getElementById('mood-tip'); el.style.display='block';
+  el.innerHTML=`<div class="tip-title">Consiglio per te</div><div class="tip-text">${tip}</div>`;
+  addXP(3); showToast('+3 XP!'); buildBadges();
+}
+
+let breathTimer=null,breathStep=0,breathCount=0;
+const BREATH=[{label:'Inspira...',dur:4000,scale:'1.5'},{label:'Trattieni...',dur:7000,scale:'1.5'},{label:'Espira piano...',dur:8000,scale:'1'}];
+function startBreath(){
+  if(breathTimer){clearTimeout(breathTimer);breathTimer=null;const c=document.getElementById('breath-circle');c.textContent='START';c.style.transform='scale(1)';document.getElementById('breath-label').textContent='Tocca per iniziare — calmati prima della gara';return;}
+  breathStep=0;breathCount=0;runBreath();
+}
+function runBreath(){
+  if(breathCount>=3){const c=document.getElementById('breath-circle');c.textContent='✓';c.style.transform='scale(1)';document.getElementById('breath-label').textContent='Ottimo! Sei più calmo adesso. 😊';addXP(10);showToast('+10 XP! Esercizio completato');breathTimer=null;return;}
+  const p=BREATH[breathStep];const c=document.getElementById('breath-circle');
+  c.textContent=(p.dur/1000)+'s';document.getElementById('breath-label').textContent=p.label;
+  c.style.transition='transform '+(p.dur/1000)+'s ease';c.style.transform='scale('+p.scale+')';
+  breathTimer=setTimeout(()=>{breathStep++;if(breathStep>=3){breathStep=0;breathCount++;}runBreath();},p.dur);
+}
+
+const VIS_ITEMS=['Ho chiuso gli occhi e immaginato la partenza','Ho visualizzato la virata perfetta','Ho immaginato il tocco finale','Mi sono visto sul podio'];
+function buildVisChecklist(){
+  document.getElementById('checklist-vis').innerHTML=VIS_ITEMS.map((item,i)=>{
+    const done=S.visChecks[i]||false;
+    return `<div class="check-item" onclick="toggleVisCheck(${i})">
+      <div class="check-box ${done?'done':''}"></div>
+      <div class="check-label ${done?'done-txt':''}">${item}</div>
+    </div>`;
+  }).join('');
+}
+function toggleVisCheck(i){ S.visChecks[i]=!S.visChecks[i]; if(S.visChecks[i]){addXP(50);showToast('+50 XP!');}else saveState(); buildVisChecklist(); }
+function saveDiary(){
+  const t=document.getElementById('diary-text'); if(!t.value.trim()) return;
+  S.diaries=S.diaries||[]; S.diaries.push({text:t.value.trim(),date:new Date().toLocaleDateString('it-IT')});
+  t.value=''; addXP(5); showToast('Pensiero salvato! +5 XP');
+  const d=document.getElementById('diary-saved'); d.textContent='✓ Salvato — '+new Date().toLocaleDateString('it-IT');
+  setTimeout(()=>{d.textContent='';},3000);
+}
+
+function buildGoalsList(){
+  document.getElementById('goals-list').innerHTML=STILI_ORDER.map(k=>{
+    const pb=PB[k],tgt=TGT[k],best=getBest(k),cur=best||pb.time;
+    const gained=parseFloat((pb.time-cur).toFixed(2));
+    const pct=Math.min(Math.max((gained/2)*100,0),100);
+    const done=cur<=tgt;
+    return `<div class="goal-item">
+      <span style="font-size:20px;width:26px;text-align:center">${pb.emoji}</span>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700">${pb.label}</div>
+        <div style="font-size:11px;color:var(--muted);margin:2px 0">Record: ${fmtTime(pb.time)} → Obiettivo: ${fmtTime(tgt)}</div>
+        <div class="progress-bar2" style="margin:4px 0"><div class="progress-fill2" style="width:${pct.toFixed(0)}%;background:${pb.color}"></div></div>
+        <span class="tag ${done?'tag-star':'tag-wip'}">${done?'🏆 Obiettivo raggiunto!':pct.toFixed(0)+'% — guadagnati '+gained+'s'}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+function buildPersonalRecords(){
+  document.getElementById('personal-records').innerHTML=STILI_ORDER.map(k=>{
+    const pb=PB[k],best=getBest(k);
+    const display=best?fmtTime(best):fmtTime(pb.time)+' (partenza)';
+    const isNew=best&&best<pb.time;
+    return `<div class="pr-row">
+      <span style="font-size:17px">${pb.emoji}</span>
+      <div style="flex:1"><div style="font-size:13px;font-weight:700">${pb.label}</div></div>
+      <div style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:${isNew?'var(--gold)':'var(--accent)'}">${display}</div>
+      ${isNew?'<span style="font-size:11px;color:var(--gold)">★ NEW</span>':''}
+    </div>`;
+  }).join('');
+}
+function addGoal(){ const txt=document.getElementById('goal-text').value.trim(); if(!txt) return; S.customGoals.push({text:txt,done:false}); document.getElementById('goal-text').value=''; addXP(150);showToast('+150 XP!');buildCustomGoals(); }
+function buildCustomGoals(){
+  document.getElementById('custom-goals').innerHTML=S.customGoals.map((g,i)=>
+    `<div class="goal-item">
+      <span style="font-size:20px;cursor:pointer" onclick="toggleCustomGoal(${i})">${g.done?'✅':'⬜'}</span>
+      <div style="flex:1;font-size:13px;${g.done?'text-decoration:line-through;color:var(--muted)':''}">${g.text}</div>
+    </div>`
+  ).join('');
+}
+function toggleCustomGoal(i){ S.customGoals[i].done=!S.customGoals[i].done; if(S.customGoals[i].done){addXP(25);showToast('🎯 Obiettivo raggiunto! +30 XP');}else saveState(); buildCustomGoals(); }
+
+// ===== GABRIELE PERSONALIZZAZIONE =====
+const QUOTES=[
+  "L'acqua non ti ferma — ti rende più forte ogni giorno. 💪",
+  "Ogni vasca nuotata è un passo verso il tuo record. 🏊",
+  "Dorso, stile, rana, farfalla — tu li sai fare tutti, Gabriele!",
+  "Il coraggio non è non avere paura. È tuffarsi lo stesso. 🌊",
+  "Ogni secondo in meno è la prova che stai crescendo. ⚡",
+  "I campioni si allenano anche quando è difficile.",
+  "La virata perfetta si allena a terra prima che in acqua.",
+  "Respira, concentrati, nuota. Sei pronto! 🏆",
+  "Non guardare il tabellone durante la gara — nuota e poi guarda. 🎯",
+  "Il tuo corpo sa già cosa fare. Fidati dell'allenamento. 💡",
+  "Ogni gara è una nuova opportunità, non un giudizio. 🌟",
+  "La rana si vince con i fianchi, il dorso con la rotazione. 📚",
+  "Mangia bene oggi e il tuo corpo ti ringrazierà in vasca. 🥗",
+  "I muscoli crescono quando ti riposi, non solo quando ti alleni. 😴",
+  "Un centesimo di secondo fa la differenza. Ogni dettaglio conta. ⏱️",
+  "Anche i campioni hanno giorni no. L'importante è tornare. 🔄",
+  "La partenza è l'1% della gara. Ma può fare la differenza. 🚀",
+  "Immagina la gara perfetta prima di dormire. Il cervello impara. 🧠",
+  "L'acqua è il tuo posto. Nessun altro ci si sente così libero. 🌊",
+  "Essere nervosi prima di una gara è normale — è il corpo che si prepara. ⚡",
+  "Il dorso è lo stile più bello. E tu lo stai imparando benissimo! 🔵",
+  "Oggi allena il corpo. Domani batti il record. 🏅",
+  "Ogni atleta che ammiri ha avuto il tuo stesso primo giorno. 👊",
+  "La stanchezza è temporanea. La soddisfazione dura per sempre. 💫",
+  "Non correre — nuota. La tecnica perfetta batte sempre la forza bruta. 🎯",
+  "Bevi acqua, mangia bene, dormi tanto. I tuoi tre segreti. 💧",
+  "Quando senti le gambe pesanti, pensa alla virata esplosiva. 💥",
+  "Il tuo miglior avversario sei tu del giorno prima. Battilo! 🏆",
+  "La farfalla fa paura a tutti. Chi la affronta diventa più forte. 🦋",
+  "Ogni gara della domenica è il risultato di tutta la settimana. 📅",
+  "Sei un nuotatore. L'acqua è casa tua. Divertiti! 🌊🏠",
+  "Un campione è qualcuno che si rialza quando non può. 💪",
+  "La concentrazione batte sempre la velocità. Prima pensa, poi nuota. 🎯",
+  "Gabriele, ogni allenamento che fai ti avvicina al podio. 🥇",
+  "Il freddo dell'acqua scompare dopo i primi 10 metri. Tuffati! 🌊",
+  "Nessun record è stato battuto da chi è rimasto sul bordo. 🏊",
+  "La tua tecnica migliora ogni giorno, anche quando non te ne accorgi. 📈",
+  "Dopo ogni gara chiediti: cosa posso migliorare? Questo ti rende grande. 🤔",
+  "Il dorso richiede fiducia. Nuoti guardando il cielo — vai! ☁️",
+  "Le gare si vincono in allenamento, non in vasca. 💪",
+  "Ogni splash è un passo avanti. Continua a fare onde! 🌊",
+  "Gabriele, il tuo potenziale è più grande di qualsiasi cronometro. ⏱️",
+  "La rana è lenta fuori dall'acqua ma velocissima dentro. Come te! 🐸",
+  "Respira prima di partire. Un respiro profondo vale secondi preziosi. 🫁",
+  "Non importa quanto sei veloce oggi — importa quanto cresci ogni giorno. 📈",
+  "L'allenamento a secco costruisce il campione che vedi in vasca. 💪",
+  "Gabriele, tu nuoti con il cuore. È il tuo superpotere. ❤️",
+  "La gara più importante è quella con te stesso di ieri. 🪞",
+  "Ogni vasca è un capitolo della tua storia da campione. 📖",
+  "Quando stai per mollare, pensa a perché hai iniziato. 🌟",
+  "Il nuoto ti insegna a respirare sotto pressione. Nella vita e in gara. 🫁",
+  "Forza Gabriele — l'acqua ti aspetta e tu sei pronto! 🏊‍♂️",
+];
+
+// Funzione per avere una frase diversa ogni giorno dell'anno
+function showQuote(){
+  const el = document.getElementById('qod');
+  if(!el) return;
+  const now = new Date();
+  // Seed basato su anno + giorno dell'anno = frase diversa ogni giorno
+  const start = new Date(now.getFullYear(), 0, 0);
+  const diff = now - start;
+  const oneDay = 1000 * 60 * 60 * 24;
+  const dayOfYear = Math.floor(diff / oneDay); // 1-365
+  const idx = dayOfYear % QUOTES.length;
+  el.textContent = QUOTES[idx];
+}
+
+
+function closeWelcome(){
+  const w=document.getElementById('welcome-card');
+  if(!w)return;
+  w.style.transition='opacity 0.4s,transform 0.4s';
+  w.style.opacity='0';
+  w.style.transform='translateY(-12px)';
+  setTimeout(()=>{ if(w.parentNode)w.parentNode.removeChild(w); },400);
+}
+
+function showQuote(){
+  const el=document.getElementById('qod');
+  if(!el)return;
+  el.textContent=QUOTES[new Date().getDay()%QUOTES.length];
+}
+
+
+const AVATARS=['🏊', '🦈', '🐬', '🌊', '⚡', '🏆', '🥇', '💪', '🔥', '🎯', '🦋', '🌟'];
+function openSettings(){
+  document.getElementById('s-name').value=S.nome||'Gabriele';
+  S._tmpAvatar=S.avatar||'🏊';
+  buildAvGrid();
+  document.getElementById('settings-overlay').classList.add('open');
+}
+function closeSettings(){document.getElementById('settings-overlay').classList.remove('open');}
+function closeSettingsOut(e){if(e.target.id==='settings-overlay')closeSettings();}
+function buildAvGrid(){
+  const g=document.getElementById('av-grid');if(!g)return;
+  g.innerHTML=AVATARS.map(av=>`<div class="av-btn ${(S._tmpAvatar||'🏊')===av?'sel':''}" onclick="pickAv('${av}')">${av}</div>`).join('');
+}
+function pickAv(av){S._tmpAvatar=av;buildAvGrid();}
+function saveSettings(){
+  const n=(document.getElementById('s-name').value||'').trim()||'Gabriele';
+  S.nome=n; S.avatar=S._tmpAvatar||'🏊';
+  saveState(); refreshXP(); closeSettings();
+  showToast(S.avatar+' Ciao '+n+'! Salvato!');
+}
+
+
+function showSec(id, btn){
+  // hide all sections
+  document.querySelectorAll('.section').forEach(function(s){
+    s.classList.remove('active');
+    s.style.display = 'none';
+  });
+  // deactivate all nav buttons
+  document.querySelectorAll('.bb-btn').forEach(function(b){
+    b.classList.remove('active');
+  });
+  // show selected section
+  var sec = document.getElementById('sec-' + id);
+  if(sec){
+    sec.classList.add('active');
+    sec.style.display = 'block';
+  }
+  // activate nav button
+  if(btn) btn.classList.add('active');
+  // scroll app to top
+  var app = document.querySelector('.app');
+  if(app) app.scrollTop = 0;
+  // rebuild OW if needed
+  if(id === 'offwater') buildOW('A');
+}
+function resetApp(){
+  if(!confirm('Sei sicuro? Tutti i punti, tempi e dati salvati verranno cancellati.')) return;
+  localStorage.removeItem('swimquest_v5'); localStorage.removeItem('swimquest_v4');
+  localStorage.removeItem('swimquest_v3');
+  localStorage.removeItem('swimquest_v2');
+  localStorage.removeItem('swimquest_v1');
+  location.reload();
+}
+
+function fabSave(){
+  saveState();
+  const lbl = document.getElementById('fab-label');
+  lbl.style.opacity='1';
+  setTimeout(()=>{ lbl.style.opacity='0'; }, 1800);
+  showToast('💾 Dati salvati! +2 XP');
+  addXP(20);
+}
+
+function init(){
+  showQuote();
+  refreshXP();
+  // explicitly show home on load
+  document.querySelectorAll('.section').forEach(function(s){
+    s.style.display = 'none';
+    s.classList.remove('active');
+  });
+  var home = document.getElementById('sec-home');
+  if(home){ home.style.display = 'block'; home.classList.add('active'); } buildWeekGrid(); buildStiliHome(); buildBadges();
+  buildResultsList(); buildFoodSection(); buildMoodGrid();
+  buildVisChecklist(); buildGoalsList(); buildPersonalRecords();
+  buildCustomGoals(); buildOW('A');
+  document.getElementById('stat-al').textContent=S.allenamenti;
+  document.getElementById('stat-ga').textContent=S.gare;
+  document.getElementById('stat-st').textContent=S.streak+'🔥';
+}
+init();
+
+// ============================================================
+// PWA SETUP — Manifest + Service Worker
+// ============================================================
+
+// ============================================================
+// PWA — Install prompt + offline cache (no SW needed)
+// ============================================================
+(function(){
+  var _prompt = null;
+
+  // Android/Chrome: intercetta il prompt di installazione
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    _prompt = e;
+    showBanner('android');
+  });
+
+  // iOS: mostra istruzioni manuali
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone = ('standalone' in navigator && navigator.standalone) ||
+                     window.matchMedia('(display-mode: standalone)').matches;
+
+  if(isIOS && !isStandalone){
+    setTimeout(function(){ showBanner('ios'); }, 1500);
+  }
+
+  function showBanner(type){
+    var banner = document.getElementById('install-banner');
+    var sub = document.getElementById('ib-sub');
+    var btn = document.getElementById('ib-btn');
+    if(!banner) return;
+    if(type === 'ios'){
+      if(sub) sub.textContent = 'Tocca \u2191 Condividi → Aggiungi a Home';
+      if(btn){ btn.textContent = 'Come fare'; btn.onclick = function(){
+        alert('1. Tocca il pulsante Condividi (\u2191) in basso\n2. Scorri e tocca "Aggiungi a schermata Home"\n3. Tocca Aggiungi in alto a destra');
+        dismissBanner();
+      };}
+    }
+    banner.classList.add('show');
+  }
+
+  window.installApp = function(){
+    if(_prompt){
+      _prompt.prompt();
+      _prompt.userChoice.then(function(){ _prompt = null; dismissBanner(); });
+    }
+  };
+
+  window.dismissBanner = function(){
+    var b = document.getElementById('install-banner');
+    if(b) b.classList.remove('show');
+  };
+
+  // Offline cache via Cache API diretta (senza SW)
+  if('caches' in window){
+    window.addEventListener('load', function(){
+      caches.open('swimquest-v12').then(function(cache){
+        cache.add(location.href).catch(function(){});
+      }).catch(function(){});
+    });
+  }
+})();
+
+</script>
+</body>
+<
+      
+/html>
