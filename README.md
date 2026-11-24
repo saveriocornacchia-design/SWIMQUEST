@@ -1,4 +1,4 @@
-# SwimQuest 🏊
+# Cloro Power 🏊
 
 App web per giovani nuotatori agonisti: registra i tempi, segue i progressi verso l'obiettivo e motiva con XP, livelli e trofei.
 
