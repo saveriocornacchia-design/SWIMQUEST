@@ -208,6 +208,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 :root[data-theme="light"] #fab-settings{box-shadow:0 4px 12px rgba(0,40,80,0.18);}
 :root[data-theme="light"] .btn,:root[data-theme="light"] .meal-tab.active{color:#fff;}
 :root[data-theme="light"] .sbtn.ok,:root[data-theme="light"] .install-btn,:root[data-theme="light"] .ib-btn{color:#fff;}
+.sex-btn{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;padding:10px 0;cursor:pointer;}
+.sex-btn.sel{background:var(--accent);border-color:var(--accent);color:var(--bg);}
 #theme-toggle{width:32px;height:32px;border-radius:50%;background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:transform 0.2s;-webkit-tap-highlight-color:transparent;}
 #theme-toggle:active{transform:scale(0.9) rotate(20deg);}
 </style>
@@ -500,8 +502,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
       <div id="s-err" style="display:none;font-size:12px;color:var(--red);margin-top:6px;">Inserisci il tuo nome</div>
     </div>
     <div class="srow" style="display:flex;gap:10px;">
-      <div style="flex:1"><div class="slabel">Età</div><input class="sinput" id="s-age" type="number" inputmode="numeric" min="5" max="99" placeholder="es. 11"></div>
-      <div style="flex:1"><div class="slabel">Categoria</div><input class="sinput" id="s-cat" type="text" maxlength="20" placeholder="es. Esordienti B"></div>
+      <div style="flex:1"><div class="slabel">Sesso</div>
+        <div style="display:flex;gap:6px;">
+          <button type="button" class="sex-btn" data-sex="M" onclick="pickSex('M')">M</button>
+          <button type="button" class="sex-btn" data-sex="F" onclick="pickSex('F')">F</button>
+        </div></div>
+      <div style="flex:1"><div class="slabel">Anno di nascita</div><select class="sinput" id="s-year" onchange="updateCatPreview()"></select></div>
+    </div>
+    <div class="srow"><div class="slabel">Categoria FIN</div>
+      <div id="s-cat" style="font-size:15px;font-weight:800;color:var(--gold);">—</div>
+      <div id="s-cat-note" style="font-size:11px;color:var(--muted);margin-top:3px;"></div>
     </div>
     <button class="sbtn ok" id="s-save" onclick="saveSettings()">✓ Salva</button>
     <div id="s-danger">
@@ -540,12 +550,27 @@ function loadState() {
   return {xp:0,streak:0,allenamenti:0,gare:0,mood:null,activeMeal:'colazione',
           times:[],foodChecks:{},visChecks:{},customGoals:[],
           weekDays:{0:false,1:false,2:false,3:false,4:false,5:false,6:false},diaries:[],
-          nome:'',eta:'',categoria:'',avatar:'🏊'};
+          nome:'',sesso:'',anno:'',avatar:'🏊'};
 }
 function saveState(){ try{localStorage.setItem('swimquest_v5',JSON.stringify(S));}catch(e){} }
 const S = loadState();
-// Migrazione: profilo creato prima dei campi età/categoria
-if(S.nome==='Gabriele' && S.eta===undefined){ S.eta='11'; S.categoria='Esordienti B2'; }
+// ── Categorie FIN ──
+// La stagione agonistica parte il 1° ottobre; l'età di categoria è quella compiuta
+// nell'anno solare in cui la stagione finisce (es. stagione 2026/27 -> 2027 - anno di nascita).
+function seasonEndYear(d){ d=d||new Date(); return d.getMonth()>=9 ? d.getFullYear()+1 : d.getFullYear(); }
+const FIN_CATS={
+  M:[{n:'Esordienti B',s:'B',from:10,to:11},{n:'Esordienti A',s:'A',from:12,to:13},{n:'Ragazzi',from:14,to:16},{n:'Juniores',from:17,to:18},{n:'Cadetti',from:19,to:20}],
+  F:[{n:'Esordienti B',s:'B',from:9,to:10},{n:'Esordienti A',s:'A',from:11,to:12},{n:'Ragazzi',from:13,to:14},{n:'Juniores',from:15,to:16},{n:'Cadetti',from:17,to:18}],
+};
+function finCategory(sesso,anno){
+  const y=parseInt(anno,10); if(!FIN_CATS[sesso]||!y) return '';
+  const age=seasonEndYear()-y, cats=FIN_CATS[sesso];
+  const c=cats.find(c=>age>=c.from&&age<=c.to);
+  if(c) return c.s ? 'Esordienti '+c.s+(age-c.from+1) : c.n;
+  if(age<cats[0].from) return 'Pre-agonismo';
+  return 'Senior';
+}
+function userCategory(){ return finCategory(S.sesso,S.anno); }
 function userName(){ return (S.nome||'').trim() || 'Campione'; }
 function esc(t){ return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function withName(t){ return t.replace(/\{N\}/g, userName()); }
@@ -600,7 +625,7 @@ function refreshXP(){
   if(wn) wn.textContent=nome;
   document.querySelectorAll('.u-name').forEach(e=>e.textContent=nome);
   const ws=document.getElementById('welcome-sub');
-  if(ws) ws.textContent=[S.categoria, 'Nuoto agonistico', S.eta ? S.eta+' anni' : ''].filter(Boolean).join(' · ');
+  if(ws) ws.textContent=[userCategory(), 'Nuoto agonistico', S.anno ? 'classe '+S.anno : ''].filter(Boolean).join(' · ');
 }
 
 // Week: L=0 M=1 M=2 G=3 V=4 S=5 D=6
@@ -1000,8 +1025,10 @@ function openSettings(onboarding){
   document.getElementById('s-save').textContent = ob ? '✓ Salva e inizia' : '✓ Salva';
   document.getElementById('s-err').style.display='none';
   document.getElementById('s-name').value=S.nome||'';
-  document.getElementById('s-age').value=S.eta||'';
-  document.getElementById('s-cat').value=S.categoria||'';
+  const ys=document.getElementById('s-year'), top=seasonEndYear()-5;
+  let o='<option value="">—</option>'; for(let y=top;y>=top-75;y--) o+=`<option value="${y}">${y}</option>`;
+  ys.innerHTML=o; ys.value=S.anno||'';
+  S._tmpSex=S.sesso||''; updateCatPreview();
   S._tmpAvatar=S.avatar||'🏊';
   buildAvGrid();
   document.getElementById('settings-overlay').classList.add('open');
@@ -1012,12 +1039,19 @@ function buildAvGrid(){
   const g=document.getElementById('av-grid');if(!g)return;
   g.innerHTML=AVATARS.map(av=>`<div class="av-btn ${(S._tmpAvatar||'🏊')===av?'sel':''}" onclick="pickAv('${av}')">${av}</div>`).join('');
 }
+function pickSex(x){ S._tmpSex=x; updateCatPreview(); }
+function updateCatPreview(){
+  document.querySelectorAll('.sex-btn').forEach(b=>b.classList.toggle('sel',b.dataset.sex===S._tmpSex));
+  const y=document.getElementById('s-year').value, c=finCategory(S._tmpSex,y);
+  document.getElementById('s-cat').textContent=c||'—';
+  const se=seasonEndYear();
+  document.getElementById('s-cat-note').textContent = c ? 'Stagione '+(se-1)+'/'+String(se).slice(2)+' — calcolata da sesso e anno di nascita' : 'Scegli sesso e anno di nascita';
+}
 function pickAv(av){S._tmpAvatar=av;buildAvGrid();}
 function saveSettings(){
   const n=(document.getElementById('s-name').value||'').trim();
   if(!n){ document.getElementById('s-err').style.display='block'; document.getElementById('s-name').focus(); return; }
-  const a=parseInt(document.getElementById('s-age').value,10);
-  S.nome=n; S.eta=(a>=5&&a<=99)?String(a):''; S.categoria=(document.getElementById('s-cat').value||'').trim();
+  S.nome=n; S.sesso=S._tmpSex||''; S.anno=document.getElementById('s-year').value||'';
   S.avatar=S._tmpAvatar||'🏊'; S.onboarded=true;
   saveState(); refreshXP(); showQuote(); closeSettings();
   showToast(S.avatar+' Ciao '+n+'! Salvato!');
