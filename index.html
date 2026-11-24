@@ -208,6 +208,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 :root[data-theme="light"] #fab-settings{box-shadow:0 4px 12px rgba(0,40,80,0.18);}
 :root[data-theme="light"] .btn,:root[data-theme="light"] .meal-tab.active{color:#fff;}
 :root[data-theme="light"] .sbtn.ok,:root[data-theme="light"] .install-btn,:root[data-theme="light"] .ib-btn{color:#fff;}
+.day-btn{background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:10px 0;cursor:pointer;}
+.day-btn.sel{background:var(--accent);border-color:var(--accent);color:var(--bg);}
 .sex-btn{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;padding:10px 0;cursor:pointer;}
 .sex-btn.sel{background:var(--accent);border-color:var(--accent);color:var(--bg);}
 #theme-toggle{width:32px;height:32px;border-radius:50%;background:var(--card2);border:1px solid var(--border);color:var(--text);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:transform 0.2s;-webkit-tap-highlight-color:transparent;}
@@ -230,7 +232,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 <div class="header">
   <div class="header-top">
     <div>
-      <div class="logo">SWIM<span>QUEST</span> <span style="font-size:9px;color:var(--muted);font-family:'Nunito',sans-serif;font-weight:700;">v13</span></div>
+      <div class="logo">SWIM<span>QUEST</span></div>
       <div id="header-name" style="font-size:13px;font-weight:900;color:var(--gold);margin-top:3px;">🏊</div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
@@ -249,7 +251,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 <div class="section active" id="sec-home">
   <div class="sec-head" style="margin-top:12px"><h2>🏊 Dashboard</h2></div>
 
-  <!-- WELCOME CARD GABRIELE -->
+  <!-- WELCOME CARD -->
   <div id="welcome-card" style="background:linear-gradient(135deg,#0f2855 0%,#1a1040 100%);border:2px solid #00d4ff;border-radius:16px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:36px;opacity:0.07;pointer-events:none;">
       <svg viewBox="0 0 300 36" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:100%"><path d="M0,18 C75,36 150,0 225,18 C262,27 281,22 300,18 L300,36 L0,36 Z" fill="#00d4ff"/></svg>
@@ -286,7 +288,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
     <div style="display:flex;gap:12px;font-size:11px;color:var(--muted)">
       <span><span style="color:var(--green)">■</span> Fatto</span>
       <span><span style="color:var(--accent)">■</span> Oggi</span>
-      <span><span style="color:var(--gold)">■</span> Gara</span>
+      <span>🌊 Acqua · 💪🧘 Off-water</span>
     </div>
   </div>
   <div class="card">
@@ -332,7 +334,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
       </div>
       <div>
         <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">Secondi (es: 37.28)</div>
-        <input type="number" id="reg-sec" min="0" max="59" step="0.01" value="37.28">
+        <input type="number" id="reg-sec" min="0" max="59" step="0.01" placeholder="es. 37.28">
       </div>
     </div>
     <button class="btn" onclick="saveTime()" style="width:100%">💾 Salva tempo +15 XP</button>
@@ -351,24 +353,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
   <div class="sec-head" style="margin-top:12px"><h2>💪 Off-Water</h2></div>
   <div class="card">
     <div class="card-title">Piano settimanale off-water</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">La piscina la gestisce l'allenatore. <b style="color:var(--green)">Martedì e Giovedì</b>: potenziamento <b>30 min max</b>. <b style="color:var(--purple)">Sabato</b>: elasticità <b>15 min</b> — leggero prima della gara.</div>
-    <div class="day-plan-grid">
-      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Lunedì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
-      <div class="day-plan-card" style="border-color:rgba(0,230,118,0.3)"><div class="day-plan-title" style="color:var(--green)">💪 Martedì</div><div class="day-plan-item" style="font-weight:700">Potenziamento A</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">30 min — max</div></div>
-      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Mercoledì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
-      <div class="day-plan-card" style="border-color:rgba(0,212,255,0.3)"><div class="day-plan-title" style="color:var(--accent)">💪 Giovedì</div><div class="day-plan-item" style="font-weight:700">Potenziamento B</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">20 min — max</div></div>
-      <div class="day-plan-card"><div class="day-plan-title" style="color:var(--muted)">🔵 Venerdì</div><div class="day-plan-item" style="color:var(--accent)">Solo piscina</div></div>
-      <div class="day-plan-card" style="border-color:rgba(179,136,255,0.3)"><div class="day-plan-title" style="color:var(--purple)">🧘 Sabato</div><div class="day-plan-item" style="font-weight:700">Elasticità</div><div class="day-plan-item" style="color:var(--muted);font-size:10px">15 min — pre-gara</div></div>
-      <div class="day-plan-card" style="border-color:rgba(255,215,0,0.3)"><div class="day-plan-title" style="color:var(--gold)">🏆 Domenica</div><div class="day-plan-item" style="color:var(--gold)">GARA!</div></div>
-    </div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6">La piscina la gestisce l'allenatore. Nei giorni off-water: <b style="color:var(--green)">potenziamento</b> (max 20–30 min) ed <b style="color:var(--purple)">elasticità</b> (15 min, leggera). I giorni si cambiano da ⚙️.</div>
+    <div class="day-plan-grid" id="day-plan-grid">    </div>
   </div>
   <div class="card">
     <div class="card-title">Seleziona sessione</div>
-    <div class="offwater-tabs">
-      <div class="ow-tab active" onclick="showOW('A',this)">💪 Martedì — Pot. A</div>
-      <div class="ow-tab" onclick="showOW('B',this)">💪 Giovedì</div>
-      <div class="ow-tab" onclick="showOW('C',this)">🧘 Sabato</div>
-    </div>
+    <div class="offwater-tabs" id="ow-tabs"></div>
     <div id="ow-content"></div>
     <div style="margin-top:12px"><button class="btn green" onclick="completeOW()" style="width:100%">✓ Sessione completata! +30 XP</button></div>
   </div>
@@ -381,6 +371,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 <!-- CIBO -->
 <div class="section" id="sec-food">
   <div class="sec-head" style="margin-top:12px"><h2>🍽️ Alimentazione</h2></div>
+  <div class="card" style="border-color:var(--orange);background:rgba(255,152,0,0.08);font-size:12px;line-height:1.5;color:var(--text);">
+    ⚠️ <b>Protocollo alimentare basato su dati fittizi.</b> Contattare l'amministratore per modificarlo.
+  </div>
   <div class="card">
     <div class="card-title">Piano del giorno</div>
     <div class="meal-tabs" id="meal-tabs"></div>
@@ -492,6 +485,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
   <div id="settings-panel">
     <div class="stitle"><span id="s-title">⚙️ Impostazioni</span><button class="sclose" id="s-close" onclick="closeSettings()">×</button></div>
     <div id="s-intro" style="display:none;font-size:13px;color:var(--text);line-height:1.5;margin:-8px 0 16px;">Prima di iniziare, dimmi chi sei. Puoi cambiarlo quando vuoi da ⚙️.</div>
+    <div id="s-step1">
     <div class="srow">
       <div class="slabel">Scegli il tuo avatar</div>
       <div class="av-grid" id="av-grid"></div>
@@ -513,7 +507,18 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
       <div id="s-cat" style="font-size:15px;font-weight:800;color:var(--gold);">—</div>
       <div id="s-cat-note" style="font-size:11px;color:var(--muted);margin-top:3px;"></div>
     </div>
+    </div>
+    <div id="s-step2">
+      <div class="srow">
+        <div class="slabel">Giorni di allenamento in acqua</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Tocca i giorni in cui vai in piscina. Gli altri giorni saranno off-water.</div>
+        <div id="s-days" style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px;"></div>
+        <div id="s-days-sum" style="font-size:12px;color:var(--muted);margin-top:8px;"></div>
+        <div id="s-days-err" style="display:none;font-size:12px;color:var(--red);margin-top:6px;">Scegli almeno un giorno in acqua</div>
+      </div>
+    </div>
     <button class="sbtn ok" id="s-save" onclick="saveSettings()">✓ Salva</button>
+    <button class="sbtn" id="s-back" onclick="obStep(1)" style="display:none;background:none;color:var(--muted);">← Indietro</button>
     <div id="s-danger">
     <div style="height:1px;background:var(--border);margin:8px 0 14px"></div>
     <div class="slabel" style="color:var(--red)">Zona pericolo</div>
@@ -526,16 +531,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 
 <script>
 const PB = {
-  stile_50:    {time:32.20, label:'50m Stile libero',  color:'#00e676', emoji:'🟢'},
-  stile_100:   {time:75.00, label:'100m Stile libero', color:'#00e676', emoji:'🟢'},
-  dorso_50:    {time:37.28, label:'50m Dorso',         color:'#00d4ff', emoji:'🔵'},
-  dorso_100:   {time:82.00, label:'100m Dorso',        color:'#00d4ff', emoji:'🔵'},
-  rana_50:     {time:44.41, label:'50m Rana',          color:'#ff9800', emoji:'🟠'},
-  farfalla_50: {time:39.10, label:'50m Farfalla',      color:'#b388ff', emoji:'🟣'},
-  misti_100:   {time:85.10, label:'100m Misti',        color:'#ffd700', emoji:'⭐'},
+  stile_50:    {label:'50m Stile libero',  color:'#00e676', emoji:'🟢'},
+  stile_100:   {label:'100m Stile libero', color:'#00e676', emoji:'🟢'},
+  dorso_50:    {label:'50m Dorso',         color:'#00d4ff', emoji:'🔵'},
+  dorso_100:   {label:'100m Dorso',        color:'#00d4ff', emoji:'🔵'},
+  rana_50:     {label:'50m Rana',          color:'#ff9800', emoji:'🟠'},
+  farfalla_50: {label:'50m Farfalla',      color:'#b388ff', emoji:'🟣'},
+  misti_100:   {label:'100m Misti',        color:'#ffd700', emoji:'⭐'},
 };
-const TGT = {};
-Object.keys(PB).forEach(k => { TGT[k] = +(PB[k].time - 2).toFixed(2); });
+// Il tempo di partenza di ogni stile è il primo tempo registrato dall'utente; obiettivo = partenza − 2 s.
+function base(k){ return (S.baselines&&S.baselines[k])||null; }
+function tgt(k){ const b=base(k); return b ? +(b-2).toFixed(2) : null; }
 
 const LEVELS = [
   {min:0,    max:2000, name:'Livello 1 — Delfino',         badge:'LV 1'},
@@ -550,10 +556,11 @@ function loadState() {
   return {xp:0,streak:0,allenamenti:0,gare:0,mood:null,activeMeal:'colazione',
           times:[],foodChecks:{},visChecks:{},customGoals:[],
           weekDays:{0:false,1:false,2:false,3:false,4:false,5:false,6:false},diaries:[],
-          nome:'',sesso:'',anno:'',avatar:'🏊'};
+          nome:'',sesso:'',anno:'',avatar:'🏊',baselines:{},trainDays:null};
 }
 function saveState(){ try{localStorage.setItem('swimquest_v5',JSON.stringify(S));}catch(e){} }
 const S = loadState();
+if(!S.baselines) S.baselines={};
 // ── Categorie FIN ──
 // La stagione agonistica parte il 1° ottobre; l'età di categoria è quella compiuta
 // nell'anno solare in cui la stagione finisce (es. stagione 2026/27 -> 2027 - anno di nascita).
@@ -630,23 +637,27 @@ function refreshXP(){
 
 // Week: L=0 M=1 M=2 G=3 V=4 S=5 D=6
 // Lunedì=piscina, Martedì=PotA, Mercoledì=piscina, Giovedì=PotB, Venerdì=piscina, Sabato=Elasticità, Domenica=Gara
-const DAY_CFG=[
-  {label:'L', emoji:'🌊', type:'acqua'},
-  {label:'M', emoji:'💪', type:'offwater'},
-  {label:'M', emoji:'🌊', type:'acqua'},
-  {label:'G', emoji:'💪', type:'offwater'},
-  {label:'V', emoji:'🌊', type:'acqua'},
-  {label:'S', emoji:'🧘', type:'offwater'},
-  {label:'D', emoji:'🏆', type:'gara'},
-];
+const DAY_NAMES=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+const DAY_LETTERS=['L','M','M','G','V','S','D'];
+// trainDays[i] = true -> allenamento in acqua; gli altri giorni sono off-water.
+function trainDays(){ return Array.isArray(S.trainDays)&&S.trainDays.length===7 ? S.trainDays : [true,false,true,false,true,false,false]; }
+// Sessioni off-water: alterna Potenziamento A/B, l'ultimo giorno off-water della settimana è Elasticità (se ce ne sono almeno 2).
+function owPlan(){
+  const off=[]; trainDays().forEach((t,i)=>{ if(!t) off.push(i); });
+  const plan={};
+  off.forEach((d,j)=>{ plan[d] = (off.length>=2 && j===off.length-1) ? 'C' : (j%2===0?'A':'B'); });
+  return plan;
+}
+function todayIdx(){ const d=new Date().getDay(); return d===0?6:d-1; }
 function buildWeekGrid(){
   const today=new Date().getDay(); const ti=today===0?6:today-1;
   const g=document.getElementById('week-grid'); g.innerHTML='';
-  DAY_CFG.forEach((d,i)=>{
+  const td=trainDays(), plan=owPlan();
+  DAY_LETTERS.forEach((label,i)=>{
+    const emoji = td[i] ? '🌊' : (plan[i]==='C' ? '🧘' : '💪');
     const el=document.createElement('div'); el.className='week-day';
-    el.innerHTML='<span class="day-letter">'+d.label+'</span>'+d.emoji;
+    el.innerHTML='<span class="day-letter">'+label+'</span>'+emoji;
     if(i===ti) el.classList.add('today');
-    if(d.type==='gara') el.classList.add('gara-day');
     if(S.weekDays[i]) el.classList.add('done-day');
     el.onclick=()=>{S.weekDays[i]=!S.weekDays[i];saveState();buildWeekGrid();};
     g.appendChild(el);
@@ -656,14 +667,14 @@ function buildWeekGrid(){
 const STILI_ORDER=['dorso_50','dorso_100','stile_50','stile_100','farfalla_50','rana_50','misti_100'];
 function buildStiliHome(){
   document.getElementById('stili-home').innerHTML=STILI_ORDER.map(k=>{
-    const pb=PB[k],tgt=TGT[k],best=getBest(k),cur=best||pb.time;
-    const gained=parseFloat((pb.time-cur).toFixed(2));
+    const pb=PB[k],b=base(k),t=tgt(k),best=getBest(k),cur=best||b;
+    const gained=b?parseFloat((b-cur).toFixed(2)):0;
     const pct=Math.min(Math.max((gained/2)*100,0),100);
     return `<div class="style-row">
       <span style="font-size:18px;width:24px;text-align:center">${pb.emoji}</span>
       <div class="style-info">
         <div class="style-name">${pb.label}</div>
-        <div class="style-times">Attuale: ${fmtTime(cur)} → Obiettivo: ${fmtTime(tgt)}</div>
+        <div class="style-times">${b?`Attuale: ${fmtTime(cur)} → Obiettivo: ${fmtTime(t)}`:'Registra il primo tempo per fissare l\'obiettivo'}</div>
         <div class="progress-bar2"><div class="progress-fill2" style="width:${pct.toFixed(0)}%;background:${pb.color}"></div></div>
       </div>
       <div style="font-size:12px;font-weight:800;color:${gained>0?'var(--green)':'var(--muted)'};min-width:36px;text-align:right">${gained>0?'−'+gained+'s':'0s'}</div>
@@ -673,13 +684,13 @@ function buildStiliHome(){
 
 const BADGES=[
   {icon:'🌊',name:'Primo tempo',     check:()=>S.times.length>0},
-  {icon:'⚡',name:'−1s dorso',       check:()=>{const b=getBest('dorso_50');return b&&b<PB.dorso_50.time-1;}},
+  {icon:'⚡',name:'−1s in uno stile',check:()=>Object.keys(PB).some(k=>{const b=getBest(k);return base(k)&&b<base(k)-1;})},
   {icon:'🔥',name:'3 streak',        check:()=>S.streak>=3},
-  {icon:'🦈',name:'Sub 35s dorso',   check:()=>{const b=getBest('dorso_50');return b&&b<35;}},
-  {icon:'🏆',name:'Obiettivo stile', check:()=>{const b=getBest('stile_50');return b&&b<=TGT.stile_50;}},
+  {icon:'🦈',name:'3 stili',         check:()=>Object.keys(PB).filter(k=>base(k)).length>=3},
+  {icon:'🏆',name:'Primo obiettivo', check:()=>Object.keys(PB).some(k=>{const b=getBest(k);return tgt(k)&&b<=tgt(k);})},
   {icon:'💪',name:'5 sessioni',      check:()=>S.allenamenti>=5},
   {icon:'🧘',name:'Zen pre-gara',    check:()=>S.mood!==null},
-  {icon:'🦋',name:'Sub 37s farfalla',check:()=>{const b=getBest('farfalla_50');return b&&b<37;}},
+  {icon:'🦋',name:'Prima gara',      check:()=>S.gare>=1},
 ];
 function buildBadges(){
   const u=BADGES.map(b=>{try{return b.check();}catch(e){return false;}});
@@ -695,7 +706,9 @@ function saveTime(){
   const sec=parseFloat(document.getElementById('reg-sec').value)||0;
   const secs=+(min*60+sec).toFixed(2);
   if(secs<=0){showToast('Inserisci un tempo valido!');return;}
-  const prev=getBest(key)||PB[key].time;
+  const prev=getBest(key);
+  const first=!base(key);
+  if(first) S.baselines[key]=secs;
   const now=new Date();
   const date=now.getDate()+' '+['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][now.getMonth()];
   S.times.unshift({key,secs,type,date});
@@ -703,7 +716,8 @@ function saveTime(){
   const got=awardOnce('time:'+key,15);
   const xpTxt=got?' +15 XP':'';
   const fb=document.getElementById('save-feedback');
-  if(secs<prev){fb.textContent='🎉 NUOVO RECORD! −'+(prev-secs).toFixed(2)+'s!';fb.style.color='var(--gold)';showToast('🏆 Nuovo record!'+xpTxt);}
+  if(first){fb.textContent='🏁 Tempo di partenza impostato — obiettivo '+fmtTime(tgt(key));fb.style.color='var(--accent)';showToast('Partenza impostata!'+xpTxt);}
+  else if(prev!==null && secs<prev){fb.textContent='🎉 NUOVO RECORD! −'+(prev-secs).toFixed(2)+'s!';fb.style.color='var(--gold)';showToast('🏆 Nuovo record!'+xpTxt);}
   else{fb.textContent='✓ Tempo salvato! Continua così!';fb.style.color='var(--green)';showToast('Salvato!'+xpTxt);}
   buildResultsList();buildStiliHome();buildGoalsList();buildPersonalRecords();buildBadges();
   setTimeout(()=>{fb.textContent='';},3000);
@@ -712,7 +726,7 @@ function buildResultsList(){
   const el=document.getElementById('results-list');
   if(!S.times.length){el.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">Nessun tempo ancora</div>';return;}
   el.innerHTML=S.times.slice(0,15).map(t=>{
-    const pb=PB[t.key]; const isRec=t.secs<=pb.time;
+    const pb=PB[t.key]; const isRec=t.secs===getBest(t.key);
     return `<div class="result-row">
       <div class="result-dot" style="background:${pb.color}"></div>
       <span style="color:${pb.color};font-weight:700;flex:1;font-size:11px">${pb.emoji} ${pb.label}</span>
@@ -727,20 +741,20 @@ function buildResultsList(){
 // B = Giovedì: Potenziamento B (forza funzionale generale — inizio tardi)
 // C = Sabato:  Elasticità full-body (pre-gara, leggero)
 const OW={
-  A:{title:'💪 Martedì — Potenziamento (30 min)',exercises:[
+  A:{title:'💪 Potenziamento A (30 min)',short:'💪 Pot. A',exercises:[
     {icon:'🦸',name:'Superman a terra',      detail:'2×10 rip — pausa 20s',      why:'Rinforza la schiena: corpo piatto nel dorso e farfalla.',      badge:'potenziamento'},
     {icon:'🧱',name:'Plank frontale',        detail:'2×25s — pausa 20s',          why:'Core stabile = niente energia sprecata in acqua.',             badge:'core'},
     {icon:'↔️',name:'Plank laterale',        detail:'2×20s per lato',             why:'Stabilità fianchi: migliora la rotazione nel dorso.',          badge:'core'},
     {icon:'🦵',name:'Ponte glutei',          detail:'2×12 rip — pausa 20s',      why:'Gambe forti per le virate e la spinta dalla parete.',          badge:'potenziamento'},
     {icon:'🔗',name:'Remata con elastico',   detail:'2×12 rip per lato',          why:'Simula la bracciata del dorso, rinforza la schiena.',          badge:'potenziamento'},
   ]},
-  B:{title:'💪 Giovedì — Potenziamento (20 min)',exercises:[
+  B:{title:'💪 Potenziamento B (20 min)',short:'💪 Pot. B',exercises:[
     {icon:'🦒',name:'Squat a corpo libero',  detail:'2×10 rip — pausa 20s',       why:'Forza gambe per partenze, virate e propulsione.',        badge:'potenziamento'},
     {icon:'🌀',name:'Crunch obliqui',        detail:'2×10 rip per lato',           why:'Rotazione del tronco: chiave nel dorso e stile libero.', badge:'core'},
     {icon:'🦅',name:'Apertura con elastico', detail:'2×10 rip — elastico davanti', why:'Rinforza le spalle per la bracciata a farfalla.',        badge:'potenziamento'},
     {icon:'🧱',name:'Plank frontale',        detail:'2×20s — pausa 15s',           why:'Core stabile: meno energia sprecata in acqua.',          badge:'core'},
   ]},
-  C:{title:'🧘 Sabato — Elasticità (15 min)',exercises:[
+  C:{title:'🧘 Elasticità (15 min)',short:'🧘 Elasticità',exercises:[
     {icon:'🐍',name:'Cobra a terra',                    detail:'2×20s',              why:'Apre il petto e migliora la postura per il dorso.',             badge:'elasticita'},
     {icon:'👶',name:'Posizione del bambino',            detail:'2×25s',              why:'Allungamento colonna e spalle — recupero perfetto.',            badge:'elasticita'},
     {icon:'🧲',name:'Stretch spalla (braccio sul petto)',detail:'2×20s per lato',   why:'Scioglie il trapezio — tensione tipica dei nuotatori.',         badge:'elasticita'},
@@ -750,12 +764,32 @@ const OW={
 };
 
 let owActive='A', owChecks={};
+function owDaysOf(key){ const plan=owPlan(); return Object.keys(plan).filter(d=>plan[d]===key).map(d=>DAY_NAMES[d].slice(0,3)); }
+function buildOWPlan(){
+  const td=trainDays(), plan=owPlan(), ti=todayIdx();
+  document.getElementById('day-plan-grid').innerHTML=DAY_NAMES.map((n,i)=>{
+    const today=i===ti?';border-color:var(--accent)':'';
+    if(td[i]) return `<div class="day-plan-card" style="${today}"><div class="day-plan-title" style="color:var(--muted)">🔵 ${n}</div><div class="day-plan-item" style="color:var(--accent)">Piscina</div></div>`;
+    const o=OW[plan[i]], col=plan[i]==='C'?'var(--purple)':'var(--green)';
+    return `<div class="day-plan-card" style="${today}"><div class="day-plan-title" style="color:${col}">${n}</div><div class="day-plan-item" style="font-weight:700">${o.short}</div></div>`;
+  }).join('');
+  const keys=['A','B','C'].filter(k=>owDaysOf(k).length);
+  const tabs=document.getElementById('ow-tabs');
+  if(!keys.length){
+    tabs.innerHTML=''; document.getElementById('ow-content').innerHTML='<div style="font-size:12px;color:var(--muted)">Nessun giorno off-water: tutti i giorni sono in acqua.</div>';
+    document.getElementById('ow-checklist').innerHTML=''; return false;
+  }
+  if(!keys.includes(owActive)) owActive = plan[ti] && keys.includes(plan[ti]) ? plan[ti] : keys[0];
+  tabs.innerHTML=keys.map(k=>`<div class="ow-tab ${k===owActive?'active':''}" onclick="showOW('${k}',this)">${OW[k].short} · ${owDaysOf(k).join(', ')}</div>`).join('');
+  return true;
+}
 function showOW(key,btn){
   owActive=key; owChecks={};
   document.querySelectorAll('.ow-tab').forEach(t=>t.classList.remove('active'));
   if(btn) btn.classList.add('active');
   buildOW(key);
 }
+function refreshOW(){ if(buildOWPlan()) buildOW(owActive); }
 function buildOW(key){
   const sess=OW[key];
   document.getElementById('ow-content').innerHTML=`
@@ -889,17 +923,17 @@ function saveDiary(){
 
 function buildGoalsList(){
   document.getElementById('goals-list').innerHTML=STILI_ORDER.map(k=>{
-    const pb=PB[k],tgt=TGT[k],best=getBest(k),cur=best||pb.time;
-    const gained=parseFloat((pb.time-cur).toFixed(2));
+    const pb=PB[k],b=base(k),t=tgt(k),best=getBest(k),cur=best||b;
+    const gained=b?parseFloat((b-cur).toFixed(2)):0;
     const pct=Math.min(Math.max((gained/2)*100,0),100);
-    const done=cur<=tgt;
+    const done=b&&cur<=t;
     return `<div class="goal-item">
       <span style="font-size:20px;width:26px;text-align:center">${pb.emoji}</span>
       <div style="flex:1">
         <div style="font-size:13px;font-weight:700">${pb.label}</div>
-        <div style="font-size:11px;color:var(--muted);margin:2px 0">Record: ${fmtTime(pb.time)} → Obiettivo: ${fmtTime(tgt)}</div>
+        <div style="font-size:11px;color:var(--muted);margin:2px 0">${b?`Partenza: ${fmtTime(b)} → Obiettivo: ${fmtTime(t)}`:'Nessun tempo ancora — il primo tempo registrato fissa la partenza'}</div>
         <div class="progress-bar2" style="margin:4px 0"><div class="progress-fill2" style="width:${pct.toFixed(0)}%;background:${pb.color}"></div></div>
-        <span class="tag ${done?'tag-star':'tag-wip'}">${done?'🏆 Obiettivo raggiunto!':pct.toFixed(0)+'% — guadagnati '+gained+'s'}</span>
+        ${b?`<span class="tag ${done?'tag-star':'tag-wip'}">${done?'🏆 Obiettivo raggiunto!':pct.toFixed(0)+'% — guadagnati '+gained+'s'}</span>`:''}
       </div>
     </div>`;
   }).join('');
@@ -907,8 +941,8 @@ function buildGoalsList(){
 function buildPersonalRecords(){
   document.getElementById('personal-records').innerHTML=STILI_ORDER.map(k=>{
     const pb=PB[k],best=getBest(k);
-    const display=best?fmtTime(best):fmtTime(pb.time)+' (partenza)';
-    const isNew=best&&best<pb.time;
+    const display=best?fmtTime(best):'—';
+    const isNew=best&&base(k)&&best<base(k);
     return `<div class="pr-row">
       <span style="font-size:17px">${pb.emoji}</span>
       <div style="flex:1"><div style="font-size:13px;font-weight:700">${pb.label}</div></div>
@@ -928,7 +962,7 @@ function buildCustomGoals(){
 }
 function toggleCustomGoal(i){ const g=S.customGoals[i]; g.done=!g.done; if(g.done && !g.rewarded){g.rewarded=true; markActive(); addXP(25); showToast('🎯 Obiettivo raggiunto! +25 XP');} else { if(g.done) showToast('🎯 Obiettivo raggiunto!'); saveState(); } buildCustomGoals(); }
 
-// ===== GABRIELE PERSONALIZZAZIONE =====
+// ===== FRASI DEL GIORNO ({N} = nome utente) =====
 const QUOTES=[
   "L'acqua non ti ferma — ti rende più forte ogni giorno. 💪",
   "Ogni vasca nuotata è un passo verso il tuo record. 🏊",
@@ -1016,13 +1050,27 @@ function showQuote(){
 
 
 const AVATARS=['🏊', '🦈', '🐬', '🌊', '⚡', '🏆', '🥇', '💪', '🔥', '🎯', '🦋', '🌟'];
+let _ob=false, _obStep=1;
+function buildDayPicker(){
+  document.getElementById('s-days').innerHTML=DAY_LETTERS.map((l,i)=>`<button type="button" class="day-btn ${S._tmpDays[i]?'sel':''}" onclick="toggleDay(${i})" title="${DAY_NAMES[i]}">${l}</button>`).join('');
+  const n=S._tmpDays.filter(Boolean).length;
+  document.getElementById('s-days-sum').textContent = n ? '🌊 '+n+' giorni in acqua · 💪 '+(7-n)+' off-water' : '';
+}
+function toggleDay(i){ S._tmpDays[i]=!S._tmpDays[i]; document.getElementById('s-days-err').style.display='none'; buildDayPicker(); }
+function obStep(n){
+  _obStep=n;
+  document.getElementById('s-step1').style.display = (!_ob||n===1)?'':'none';
+  document.getElementById('s-step2').style.display = (!_ob||n===2)?'':'none';
+  document.getElementById('s-back').style.display = (_ob&&n===2)?'':'none';
+  document.getElementById('s-save').textContent = !_ob ? '✓ Salva' : (n===1 ? 'Avanti →' : '✓ Salva e inizia');
+  document.getElementById('s-intro').textContent = n===1 ? 'Prima di iniziare, dimmi chi sei. Puoi cambiarlo quando vuoi da ⚙️.' : 'Ultimo passo: quando ti alleni in piscina?';
+}
 function openSettings(onboarding){
-  const ob=onboarding===true;
+  const ob=onboarding===true; _ob=ob;
   document.getElementById('s-title').textContent = ob ? '👋 Benvenuto in SwimQuest' : '⚙️ Impostazioni';
   document.getElementById('s-intro').style.display = ob ? 'block' : 'none';
   document.getElementById('s-close').style.display = ob ? 'none' : '';
   document.getElementById('s-danger').style.display = ob ? 'none' : '';
-  document.getElementById('s-save').textContent = ob ? '✓ Salva e inizia' : '✓ Salva';
   document.getElementById('s-err').style.display='none';
   document.getElementById('s-name').value=S.nome||'';
   const ys=document.getElementById('s-year'), top=seasonEndYear()-5;
@@ -1030,7 +1078,9 @@ function openSettings(onboarding){
   ys.innerHTML=o; ys.value=S.anno||'';
   S._tmpSex=S.sesso||''; updateCatPreview();
   S._tmpAvatar=S.avatar||'🏊';
-  buildAvGrid();
+  S._tmpDays = Array.isArray(S.trainDays) ? S.trainDays.slice() : [false,false,false,false,false,false,false];
+  document.getElementById('s-days-err').style.display='none';
+  buildAvGrid(); buildDayPicker(); obStep(1);
   document.getElementById('settings-overlay').classList.add('open');
 }
 function closeSettings(){ if(!S.onboarded) return; document.getElementById('settings-overlay').classList.remove('open');}
@@ -1050,10 +1100,12 @@ function updateCatPreview(){
 function pickAv(av){S._tmpAvatar=av;buildAvGrid();}
 function saveSettings(){
   const n=(document.getElementById('s-name').value||'').trim();
-  if(!n){ document.getElementById('s-err').style.display='block'; document.getElementById('s-name').focus(); return; }
+  if(!n){ if(_ob&&_obStep===2) obStep(1); document.getElementById('s-err').style.display='block'; document.getElementById('s-name').focus(); return; }
+  if(_ob && _obStep===1){ obStep(2); return; }
+  if(!S._tmpDays.some(Boolean)){ document.getElementById('s-days-err').style.display='block'; return; }
   S.nome=n; S.sesso=S._tmpSex||''; S.anno=document.getElementById('s-year').value||'';
-  S.avatar=S._tmpAvatar||'🏊'; S.onboarded=true;
-  saveState(); refreshXP(); showQuote(); closeSettings();
+  S.avatar=S._tmpAvatar||'🏊'; S.trainDays=S._tmpDays.slice(); S.onboarded=true;
+  saveState(); refreshXP(); showQuote(); buildWeekGrid(); refreshOW(); closeSettings();
   showToast(S.avatar+' Ciao '+n+'! Salvato!');
 }
 
@@ -1080,7 +1132,7 @@ function showSec(id, btn){
   var app = document.querySelector('.app');
   if(app) app.scrollTop = 0;
   // rebuild OW if needed
-  if(id === 'offwater') buildOW('A');
+  if(id === 'offwater') refreshOW();
 }
 function resetApp(){
   if(!confirm('Sei sicuro? Tutti i punti, tempi e dati salvati verranno cancellati.')) return;
@@ -1112,7 +1164,7 @@ function init(){
   if(home){ home.style.display = 'block'; home.classList.add('active'); } buildWeekGrid(); buildStiliHome(); buildBadges();
   buildResultsList(); buildFoodSection(); buildMoodGrid();
   buildVisChecklist(); buildGoalsList(); buildPersonalRecords();
-  buildCustomGoals(); buildOW('A');
+  buildCustomGoals(); { const p=owPlan(), t=todayIdx(); if(p[t]) owActive=p[t]; } refreshOW();
   document.getElementById('stat-al').textContent=S.allenamenti;
   document.getElementById('stat-ga').textContent=S.gare;
   document.getElementById('stat-st').textContent=S.streak+'🔥';

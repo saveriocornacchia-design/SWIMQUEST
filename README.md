@@ -7,9 +7,10 @@ App web per giovani nuotatori agonisti: registra i tempi, segue i progressi vers
 ## Funzioni
 
 - **Profilo**: al primo avvio si inseriscono nome, avatar, sesso e anno di nascita. La categoria FIN (Esordienti B1/B2, A1/A2, Ragazzi, Juniores, Cadetti) viene calcolata in automatico per la stagione in corso, che parte il 1° ottobre. Si modifica da ⚙️.
-- **Tempi**: registrazione di tempi di allenamento e di gara ufficiale, storico, record personali e avanzamento verso l'obiettivo di −2 s per stile.
+- **Giorni di allenamento**: subito dopo il profilo si scelgono i giorni in piscina; gli altri diventano off-water, con le sessioni assegnate in automatico (Potenziamento A/B alternati, Elasticità l'ultimo giorno off-water della settimana). Si modificano da ⚙️.
+- **Tempi**: registrazione di tempi di allenamento e di gara ufficiale, storico e record personali. Il primo tempo registrato per ogni stile diventa il tempo di partenza; l'obiettivo è la partenza −2 s.
 - **Off-Water**: piano settimanale di potenziamento ed elasticità con checklist.
-- **Cibo**: piano pasti del giorno e checklist giornaliera.
+- **Cibo**: piano pasti del giorno e checklist giornaliera. Il protocollo alimentare è basato su dati fittizi: per modificarlo contattare l'amministratore.
 - **Mente & Gara**: umore, respirazione 4-7-8, visualizzazione e diario pre-gara.
 - **XP e streak**: ogni azione dà XP una sola volta al giorno, quindi togliere e rimettere una spunta non dà altri punti. La streak conta i giorni consecutivi con almeno un'attività e si azzera se ne salti uno.
 - **Tema chiaro/scuro**: pulsante ☀️/🌙 nell'header; la scelta viene ricordata.
