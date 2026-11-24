@@ -30,3 +30,7 @@ Non ci sono server né account: tutto è salvato nel browser del telefono (local
 ## Sviluppo
 
 L'app è un solo file statico, `index.html`, senza build né dipendenze. GitHub Pages lo pubblica dal branch `main`. Per provarla in locale basta aprire il file nel browser.
+
+## Licenza
+
+Tutti i diritti riservati: vedi [LICENSE](LICENSE). L'app si può usare dal link, ma non copiare, modificare o ripubblicare senza permesso.
