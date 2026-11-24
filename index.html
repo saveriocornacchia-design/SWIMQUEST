@@ -549,6 +549,28 @@ function showSection(id,btn){
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2300); }
 
 function addXP(n){ S.xp+=n; refreshXP(); saveState(); }
+// ── XP anti-farming + streak giornaliera ──
+function dayKey(d){ d=d||new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function yesterdayKey(){ const d=new Date(); d.setDate(d.getDate()-1); return dayKey(d); }
+// Streak = giorni consecutivi con almeno un'attività. Si azzera se salti un giorno.
+function checkStreak(){
+  if(S.lastActive && S.lastActive!==dayKey() && S.lastActive!==yesterdayKey()){ S.streak=0; saveState(); }
+}
+function markActive(){
+  const t=dayKey(); if(S.lastActive===t) return;
+  S.streak = S.lastActive===yesterdayKey() ? (S.streak||0)+1 : 1;
+  S.lastActive=t;
+  const el=document.getElementById('stat-st'); if(el) el.textContent=S.streak+'🔥';
+  if(typeof buildBadges==='function') buildBadges();
+}
+// Assegna XP una sola volta al giorno per la stessa azione. Ritorna true se assegnati.
+function awardOnce(id,n){
+  const t=dayKey();
+  if(!S.awards || S.awards.date!==t) S.awards={date:t,ids:{}};
+  markActive();
+  if(S.awards.ids[id]){ saveState(); return false; }
+  S.awards.ids[id]=true; addXP(n); return true;
+}
 function refreshXP(){
   const lv=LEVELS.find(l=>S.xp>=l.min&&S.xp<l.max)||LEVELS[LEVELS.length-1];
   const pct=Math.min((S.xp/10000)*100,100);
@@ -637,10 +659,11 @@ function saveTime(){
   const date=now.getDate()+' '+['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][now.getMonth()];
   S.times.unshift({key,secs,type,date});
   if(type==='gara'){S.gare++;document.getElementById('stat-ga').textContent=S.gare;}
-  addXP(15);
+  const got=awardOnce('time:'+key,15);
+  const xpTxt=got?' +15 XP':'';
   const fb=document.getElementById('save-feedback');
-  if(secs<prev){fb.textContent='🎉 NUOVO RECORD! −'+(prev-secs).toFixed(2)+'s!';fb.style.color='var(--gold)';showToast('🏆 Nuovo record! +15 XP');}
-  else{fb.textContent='✓ Tempo salvato! Continua così!';fb.style.color='var(--green)';showToast('Salvato! +15 XP');}
+  if(secs<prev){fb.textContent='🎉 NUOVO RECORD! −'+(prev-secs).toFixed(2)+'s!';fb.style.color='var(--gold)';showToast('🏆 Nuovo record!'+xpTxt);}
+  else{fb.textContent='✓ Tempo salvato! Continua così!';fb.style.color='var(--green)';showToast('Salvato!'+xpTxt);}
   buildResultsList();buildStiliHome();buildGoalsList();buildPersonalRecords();buildBadges();
   setTimeout(()=>{fb.textContent='';},3000);
 }
@@ -713,12 +736,12 @@ function buildOWChecklist(key){
     </div>`;
   }).join('');
 }
-function toggleOWCheck(i,key){ owChecks[i]=!owChecks[i]; if(owChecks[i]){addXP(50);showToast('+50 XP!');} buildOWChecklist(key); }
+function toggleOWCheck(i,key){ owChecks[i]=!owChecks[i]; if(owChecks[i] && awardOnce('ow:'+key+':'+i,50)) showToast('+50 XP!'); buildOWChecklist(key); }
 function completeOW(){
-  S.allenamenti++; S.streak++;
+  if(!awardOnce('ow-complete',30)){ showToast('✓ Allenamento di oggi già registrato'); return; }
+  S.allenamenti++; saveState();
   document.getElementById('stat-al').textContent=S.allenamenti;
-  document.getElementById('stat-st').textContent=S.streak+'🔥';
-  addXP(30); showToast('💪 Completato! +35 XP — streak '+S.streak+'🔥');
+  showToast('💪 Completato! +30 XP — streak '+S.streak+'🔥');
   buildBadges(); buildWeekGrid();
 }
 
@@ -768,7 +791,7 @@ function setMeal(k){
       <div class="check-label">${item}</div>
     </div>`).join('')}`;
 }
-function toggleFoodCheck(i){ S.foodChecks[i]=!S.foodChecks[i]; if(S.foodChecks[i]){addXP(30);showToast('+30 XP!');}else saveState(); buildFoodSection(); }
+function toggleFoodCheck(i){ S.foodChecks[i]=!S.foodChecks[i]; if(S.foodChecks[i] && awardOnce('food:'+i,30)) showToast('+30 XP!'); else saveState(); buildFoodSection(); }
 
 const MOODS=[
   {emoji:'😰',label:'Molto teso', tips:['Gabriele, respira piano: 4s inspira, 7s trattieni, 8s espira — 3 volte!','Scrivi 3 cose che ami del nuoto.','Anche i campioni hanno i nervi — è energia!']},
@@ -787,7 +810,7 @@ function setMood(i){
   const m=MOODS[i]; const tip=m.tips[Math.floor(Math.random()*m.tips.length)];
   const el=document.getElementById('mood-tip'); el.style.display='block';
   el.innerHTML=`<div class="tip-title">Consiglio per te</div><div class="tip-text">${tip}</div>`;
-  addXP(3); showToast('+3 XP!'); buildBadges();
+  if(awardOnce('mood',3)) showToast('+3 XP!'); buildBadges();
 }
 
 let breathTimer=null,breathStep=0,breathCount=0;
@@ -814,11 +837,11 @@ function buildVisChecklist(){
     </div>`;
   }).join('');
 }
-function toggleVisCheck(i){ S.visChecks[i]=!S.visChecks[i]; if(S.visChecks[i]){addXP(50);showToast('+50 XP!');}else saveState(); buildVisChecklist(); }
+function toggleVisCheck(i){ S.visChecks[i]=!S.visChecks[i]; if(S.visChecks[i] && awardOnce('vis:'+i,50)) showToast('+50 XP!'); else saveState(); buildVisChecklist(); }
 function saveDiary(){
   const t=document.getElementById('diary-text'); if(!t.value.trim()) return;
   S.diaries=S.diaries||[]; S.diaries.push({text:t.value.trim(),date:new Date().toLocaleDateString('it-IT')});
-  t.value=''; addXP(5); showToast('Pensiero salvato! +5 XP');
+  t.value=''; showToast(awardOnce('diary',5)?'Pensiero salvato! +5 XP':'Pensiero salvato!');
   const d=document.getElementById('diary-saved'); d.textContent='✓ Salvato — '+new Date().toLocaleDateString('it-IT');
   setTimeout(()=>{d.textContent='';},3000);
 }
@@ -853,7 +876,7 @@ function buildPersonalRecords(){
     </div>`;
   }).join('');
 }
-function addGoal(){ const txt=document.getElementById('goal-text').value.trim(); if(!txt) return; S.customGoals.push({text:txt,done:false}); document.getElementById('goal-text').value=''; addXP(150);showToast('+150 XP!');buildCustomGoals(); }
+function addGoal(){ const txt=document.getElementById('goal-text').value.trim(); if(!txt) return; S.customGoals.push({text:txt,done:false}); document.getElementById('goal-text').value=''; showToast(awardOnce('goal-add',150)?'+150 XP!':'Obiettivo aggiunto!'); saveState(); buildCustomGoals(); }
 function buildCustomGoals(){
   document.getElementById('custom-goals').innerHTML=S.customGoals.map((g,i)=>
     `<div class="goal-item">
@@ -862,7 +885,7 @@ function buildCustomGoals(){
     </div>`
   ).join('');
 }
-function toggleCustomGoal(i){ S.customGoals[i].done=!S.customGoals[i].done; if(S.customGoals[i].done){addXP(25);showToast('🎯 Obiettivo raggiunto! +30 XP');}else saveState(); buildCustomGoals(); }
+function toggleCustomGoal(i){ const g=S.customGoals[i]; g.done=!g.done; if(g.done && !g.rewarded){g.rewarded=true; markActive(); addXP(25); showToast('🎯 Obiettivo raggiunto! +25 XP');} else { if(g.done) showToast('🎯 Obiettivo raggiunto!'); saveState(); } buildCustomGoals(); }
 
 // ===== GABRIELE PERSONALIZZAZIONE =====
 const QUOTES=[
@@ -1011,11 +1034,11 @@ function fabSave(){
   const lbl = document.getElementById('fab-label');
   lbl.style.opacity='1';
   setTimeout(()=>{ lbl.style.opacity='0'; }, 1800);
-  showToast('💾 Dati salvati! +2 XP');
-  addXP(20);
+  showToast('💾 Dati salvati!');
 }
 
 function init(){
+  checkStreak();
   showQuote();
   refreshXP();
   // explicitly show home on load
