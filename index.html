@@ -335,7 +335,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
         <input type="number" id="reg-sec" min="0" max="59" step="0.01" value="37.28">
       </div>
     </div>
-    <button class="btn" onclick="saveTime()" style="width:100%">💾 Salva tempo +150 XP</button>
+    <button class="btn" onclick="saveTime()" style="width:100%">💾 Salva tempo +15 XP</button>
     <div id="save-feedback" style="font-size:12px;margin-top:6px;min-height:18px;text-align:center;"></div>
   </div>
   <div class="card">
@@ -370,7 +370,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
       <div class="ow-tab" onclick="showOW('C',this)">🧘 Sabato</div>
     </div>
     <div id="ow-content"></div>
-    <div style="margin-top:12px"><button class="btn green" onclick="completeOW()" style="width:100%">✓ Sessione completata! +300 XP</button></div>
+    <div style="margin-top:12px"><button class="btn green" onclick="completeOW()" style="width:100%">✓ Sessione completata! +30 XP</button></div>
   </div>
   <div class="card">
     <div class="card-title">📋 Checklist sessione</div>
@@ -427,7 +427,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
   <div class="card">
     <div class="card-title">📖 Diario pre-gara</div>
     <textarea id="diary-text" style="min-height:80px;resize:vertical" placeholder="Come ti senti? Hai paura? Sei carico? Scrivi tutto qui..."></textarea>
-    <button class="btn secondary" style="margin-top:8px;width:100%" onclick="saveDiary()">Salva pensiero +80 XP</button>
+    <button class="btn secondary" style="margin-top:8px;width:100%" onclick="saveDiary()">Salva pensiero +5 XP</button>
     <div id="diary-saved" style="font-size:11px;color:var(--green);margin-top:6px;min-height:14px;"></div>
   </div>
 </div>
@@ -446,7 +446,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
   <div class="card">
     <div class="card-title">➕ Obiettivo personale</div>
     <div style="margin-bottom:8px"><input type="text" id="goal-text" placeholder="es. arrivare in finale, vincere la gara di dorso..."></div>
-    <button class="btn" onclick="addGoal()" style="width:100%">Aggiungi +100 XP</button>
+    <button class="btn" onclick="addGoal()" style="width:100%">Aggiungi +150 XP</button>
     <div id="custom-goals" style="margin-top:12px"></div>
   </div>
 </div>
@@ -573,7 +573,7 @@ function finCategory(sesso,anno){
 function userCategory(){ return finCategory(S.sesso,S.anno); }
 function userName(){ return (S.nome||'').trim() || 'Campione'; }
 function esc(t){ return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function withName(t){ return t.replace(/\{N\}/g, userName()); }
+function withName(t){ return t.replace(/\{NU\}/g, userName().toUpperCase()).replace(/\{N\}/g, userName()); }
 
 function fmtTime(s){ if(s<60) return s.toFixed(2)+'s'; return Math.floor(s/60)+':'+(s%60).toFixed(2).padStart(5,'0'); }
 function getBest(k){ const f=S.times.filter(t=>t.key===k); return f.length?Math.min(...f.map(t=>t.secs)):null; }
@@ -796,7 +796,7 @@ const MEALS={
 };
 const FOOD_CHECKS=['Colazione fatta ✓','500ml acqua mattina','Spuntino sano ✓','Pranzo equilibrato ✓','Pre-allenamento ok ✓','Post-allenamento ok ✓','Cena leggera ✓','2L acqua totali ✓'];
 const FOOD_TIPS=[
-  'Per un atleta di 11 anni: circa 1600-1800 kcal nei giorni di allenamento sono la giusta energia!',
+  'Per un atleta di 10-12 anni: circa 1600-1800 kcal nei giorni di allenamento sono la giusta energia!',
   'Bevi 1.5-2L di acqua al giorno — il corpo di un nuotatore ne ha molto bisogno.',
   'La banana prima dell\'allenamento: energia rapida, potassio per i muscoli.',
   'Dopo l\'allenamento mangia entro 30 min — il corpo recupera al massimo!',
@@ -839,7 +839,7 @@ const MOODS=[
   {emoji:'😟',label:'Ansioso',    tips:['Fai 5 respiri lenti, {N} — piano piano.','Allunga le spalle per 2 minuti.','Ricorda una gara in cui hai nuotato benissimo!']},
   {emoji:'😐',label:'Normale',    tips:['Stai bene — concentrazione alta!','Ascolta la tua musica preferita.','Visualizza la partenza perfetta.']},
   {emoji:'😊',label:'Bene',       tips:['Ottimo! Canalizza questa energia positiva.','Condividi la carica con i compagni.','Sei pronto a dare il massimo!']},
-  {emoji:'🔥',label:'Carico!',   tips:['ANDIAMO GABRIELE! Porta questa energia in vasca!','Ricorda la tecnica anche quando spingi al massimo.','Divertiti — il nuoto è la cosa più bella!']},
+  {emoji:'🔥',label:'Carico!',   tips:['ANDIAMO {NU}! Porta questa energia in vasca!','Ricorda la tecnica anche quando spingi al massimo.','Divertiti — il nuoto è la cosa più bella!']},
 ];
 function buildMoodGrid(){
   document.getElementById('mood-grid').innerHTML=MOODS.map((m,i)=>
@@ -861,7 +861,7 @@ function startBreath(){
   breathStep=0;breathCount=0;runBreath();
 }
 function runBreath(){
-  if(breathCount>=3){const c=document.getElementById('breath-circle');c.textContent='✓';c.style.transform='scale(1)';document.getElementById('breath-label').textContent='Ottimo! Sei più calmo adesso. 😊';addXP(10);showToast('+10 XP! Esercizio completato');breathTimer=null;return;}
+  if(breathCount>=3){const c=document.getElementById('breath-circle');c.textContent='✓';c.style.transform='scale(1)';document.getElementById('breath-label').textContent='Ottimo! Sei più calmo adesso. 😊';showToast(awardOnce('breath',10)?'+10 XP! Esercizio completato':'Esercizio completato');breathTimer=null;return;}
   const p=BREATH[breathStep];const c=document.getElementById('breath-circle');
   c.textContent=(p.dur/1000)+'s';document.getElementById('breath-label').textContent=p.label;
   c.style.transition='transform '+(p.dur/1000)+'s ease';c.style.transform='scale('+p.scale+')';
